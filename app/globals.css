@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-montserrat);
+  --font-heading: var(--font-plus-jakarta);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +22,134 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 600;
+}
+
+.social-sidebar {
+  transform: translateX(calc(100% - 10px));
+  transition: transform 0.5s ease-in-out;
+}
+
+.social-sidebar:hover,
+.social-sidebar:focus-within {
+  transform: translateX(0);
+}
+
+.social-light-ring,
+.social-light-glyph {
+  --x: -600px;
+  --y: -600px;
+  --social-glow: radial-gradient(
+    circle 140px at var(--x) var(--y),
+    #ffffff 0%,
+    #ffffff 10%,
+    #535353 100%
+  );
+}
+
+.social-light-ring {
+  border: 1.5px solid transparent;
+  background: var(--social-glow);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.social-light-glyph {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background: var(--social-glow);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.social-sidebar-nudge {
+  animation: social-sidebar-nudge 4.5s ease-in-out infinite;
+}
+
+.social-sidebar:hover .social-sidebar-nudge,
+.social-sidebar:focus-within .social-sidebar-nudge {
+  animation: none;
+}
+
+.tech-slider {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.tech-slider-track,
+.experience-slider-track {
+  animation-name: tech-slider;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.experience-slider {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+@keyframes tech-slider {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-slider-track,
+  .experience-slider-track {
+    animation: none;
+  }
+}
+
+@keyframes social-sidebar-nudge {
+  0%,
+  78%,
+  100% {
+    transform: translateX(0);
+  }
+  84% {
+    transform: translateX(-16px);
+  }
+  90% {
+    transform: translateX(0);
+  }
+  94% {
+    transform: translateX(-8px);
+  }
 }
