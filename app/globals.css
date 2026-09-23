@@ -58,6 +58,27 @@ h6 {
   );
 }
 
+.experience-card-ring {
+  --x: -600px;
+  --y: -600px;
+  --card-glow: radial-gradient(
+    circle 160px at var(--x) var(--y),
+    #d4d4d4 0%,
+    #8a8a8a 40%,
+    #535353 100%
+  );
+  border: 1.5px solid transparent;
+  background: var(--card-glow);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
 .social-light-ring {
   border: 1.5px solid transparent;
   background: var(--social-glow);

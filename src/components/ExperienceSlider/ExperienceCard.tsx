@@ -4,6 +4,7 @@ export interface ExperienceCardProps {
   company: string;
   role: string;
   logo?: string;
+  url?: string;
 }
 
 function CompanyMark({ company, logo }: Pick<ExperienceCardProps, "company" | "logo">) {
@@ -26,12 +27,40 @@ function CompanyMark({ company, logo }: Pick<ExperienceCardProps, "company" | "l
   );
 }
 
-export default function ExperienceCard({ company, role, logo }: ExperienceCardProps) {
-  return (
-    <article className="flex w-[min(20rem,82vw)] flex-col items-start rounded-[20px] border border-neutral-500 bg-transparent p-[15px] text-left font-sans transition-transform duration-300 ease-out hover:-translate-y-[15px]">
+export default function ExperienceCard({ company, role, logo, url }: ExperienceCardProps) {
+  const className =
+    "relative flex w-[var(--experience-card-width,68vw)] flex-col items-start rounded-[20px] bg-transparent p-[15px] text-left font-sans transition-transform duration-300 ease-out hover:-translate-y-[15px] md:w-80";
+
+  const content = (
+    <>
+      <span
+        data-light
+        aria-hidden="true"
+        className="experience-card-ring pointer-events-none absolute inset-0 rounded-[20px]"
+      />
       <CompanyMark company={company} logo={logo} />
-      <p className="mt-3 text-[20px] text-white">{company}</p>
-      <p className="text-base text-white/70">{role}</p>
-    </article>
+      <p className="mt-3 whitespace-nowrap text-[18px] text-white md:whitespace-normal md:text-[20px]">
+        {company}
+      </p>
+      <p className="whitespace-nowrap text-[14px] text-white/70 md:whitespace-normal md:text-base">
+        {role}
+      </p>
+    </>
   );
+
+  if (url) {
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${company} website`}
+        className={className}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return <article className={className}>{content}</article>;
 }
