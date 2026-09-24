@@ -11,10 +11,10 @@ export interface WorkflowProps {
 }
 
 const STAIR_PLACEMENT = [
-  "md:col-start-1 md:row-start-1",
-  "md:col-start-2 md:row-start-1",
-  "md:col-start-2 md:row-start-2",
-  "md:col-start-3 md:row-start-2",
+  "xl:col-start-1 xl:row-start-1",
+  "xl:col-start-2 xl:row-start-1",
+  "xl:col-start-2 xl:row-start-2",
+  "xl:col-start-3 xl:row-start-2",
 ] as const;
 
 const CARD_WAVE_DELAY = ["0s", "1.45s", "2.9s", "4.35s"] as const;
@@ -27,7 +27,7 @@ export default function Workflow({ heading, subtitle, cards, className = "" }: W
     const root = rootRef.current;
     if (!root) return;
 
-    const desktop = window.matchMedia("(min-width: 768px)");
+    const desktop = window.matchMedia("(min-width: 1280px)");
     const pointer = { x: -9999, y: -9999 };
     const glowReach = 160;
     let frame = 0;
@@ -106,7 +106,7 @@ export default function Workflow({ heading, subtitle, cards, className = "" }: W
 
       <div
         ref={rootRef}
-        className="mx-auto mt-12 flex w-full max-w-[350px] flex-col items-center md:grid md:w-fit md:max-w-none md:grid-cols-3 md:gap-6"
+        className="mx-auto mt-12 flex w-full max-w-[350px] flex-col items-center xl:grid xl:w-fit xl:max-w-none xl:grid-cols-3 xl:gap-6"
       >
         {cards.map((card, index) => (
           <Fragment key={card.title}>

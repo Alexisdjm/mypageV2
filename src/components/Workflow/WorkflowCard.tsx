@@ -18,7 +18,7 @@ export default function WorkflowCard({
 }: WorkflowCardProps) {
   return (
     <article
-      className={`relative flex aspect-[350/250] w-full max-w-[350px] flex-col items-start rounded-[24px] bg-[#020202] p-6 text-left md:aspect-auto md:h-[250px] md:w-[350px] md:max-w-none ${className}`}
+      className={`relative flex aspect-[350/250] w-full max-w-[350px] flex-col items-start rounded-[24px] bg-[#020202] p-6 text-left xl:aspect-auto xl:h-[250px] xl:w-[350px] xl:max-w-none ${className}`}
     >
       <span
         data-light
