@@ -16,7 +16,7 @@ function Track({
   hidden?: boolean;
 }) {
   return (
-    <ul className="flex items-stretch gap-4" aria-hidden={hidden || undefined} inert={hidden || undefined}>
+    <ul className="flex items-stretch gap-8" aria-hidden={hidden || undefined} inert={hidden || undefined}>
       {cards.map((card) => (
         <li key={card.company} className="shrink-0">
           <ExperienceCard {...card} url={hidden ? undefined : card.url} />

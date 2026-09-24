@@ -1,6 +1,7 @@
-import { ExperienceSlider, HeroBanner, ReactBitsLight, TechSlider } from "@/src/components";
+import { ExperienceSlider, HeroBanner, ReactBitsLight, Services, TechSlider } from "@/src/components";
 import { homeExperience } from "@/src/config/experience";
 import { homeHero } from "@/src/config/homeHero";
+import { homeServices } from "@/src/config/services";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <TechSlider className="pb-3" />
       </div>
       <ExperienceSlider {...homeExperience} />
+      <Services {...homeServices} />
     </>
   );
 }

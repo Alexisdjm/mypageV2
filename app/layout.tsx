@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat, Plus_Jakarta_Sans } from "next/font/google";
+import { Montserrat, Plus_Jakarta_Sans, Geist } from "next/font/google";
 import { Header, SocialSidebar } from "@/src/components";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -26,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${plusJakarta.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", montserrat.variable, plusJakarta.variable, "font-sans", geist.variable)}
     >
       <body className="relative h-full min-h-full flex flex-col">
         <Header />
