@@ -1,7 +1,9 @@
-import { ExperienceSlider, HeroBanner, ReactBitsLight, Services, TechSlider } from "@/src/components";
+import { ExperienceSlider, HeroBanner, ReactBitsLight, Services, TechSlider, Work, Workflow } from "@/src/components";
 import { homeExperience } from "@/src/config/experience";
 import { homeHero } from "@/src/config/homeHero";
 import { homeServices } from "@/src/config/services";
+import { homeWork } from "@/src/config/work";
+import { homeWorkflow } from "@/src/config/workflow";
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
       </div>
       <ExperienceSlider {...homeExperience} />
       <Services {...homeServices} />
+      <Work {...homeWork} />
+      <Workflow {...homeWorkflow} />
     </>
   );
 }

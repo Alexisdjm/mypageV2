@@ -5,6 +5,8 @@ export { default as SocialSidebar } from "./SocialSidebar";
 export { default as TechSlider } from "./TechSlider";
 export { default as ExperienceSlider } from "./ExperienceSlider";
 export { default as Services } from "./Services";
+export { default as Work } from "./Work";
+export { default as Workflow } from "./Workflow/Workflow";
 export { Logo } from "./svgs";
 export { PrimaryCTA, SecondaryCTA, MenuCTA } from "./UXUI";
 export { ReactBitsLight, ReactBitsDots } from "./animations";

@@ -128,7 +128,8 @@ h6 {
   );
 }
 
-.experience-card-ring {
+.experience-card-ring,
+.workflow-card-ring {
   --x: -600px;
   --y: -600px;
   --card-glow: radial-gradient(
@@ -145,6 +146,136 @@ h6 {
   -webkit-mask-composite: xor;
   mask:
     linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.workflow-card-ring {
+  --card-glow: radial-gradient(
+    circle 160px at left var(--x) top var(--y),
+    #e8e8e8 0%,
+    #c4c4c4 25%,
+    #3a3a3a 62%,
+    #2a2a2a 100%
+  );
+  background-origin: border-box;
+}
+
+@property --workflow-y {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: -25%;
+}
+
+.workflow-rail {
+  position: relative;
+  z-index: 0;
+  display: none;
+  height: 40px;
+  width: 12px;
+  justify-content: center;
+}
+
+.workflow-rail::before {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background-image: radial-gradient(circle closest-side, #3a3a3a 1.15px, transparent 1.25px);
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: 2px 9px;
+}
+
+.workflow-rail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 8px;
+  border-radius: 999px;
+  background: #e4e4e4;
+  box-shadow: 0 0 10px rgba(232, 232, 232, 0.7);
+  opacity: 0;
+  transform: translate(-50%, -8px);
+}
+
+@media (max-width: 767.98px) {
+  .workflow-rail {
+    display: flex;
+  }
+
+  .workflow-rail::after {
+    animation: workflow-rail-wave 5.6s linear infinite;
+    animation-delay: var(--wave-delay, 0s);
+  }
+
+  .workflow-card-ring {
+    --workflow-y: -25%;
+    --card-glow: radial-gradient(
+      ellipse 95% 90px at 50% var(--workflow-y),
+      #e8e8e8 0%,
+      #d0d0d0 38%,
+      #3a3a3a 72%,
+      #2a2a2a 100%
+    );
+    animation: workflow-card-wave 5.6s linear infinite;
+    animation-delay: var(--wave-delay, 0s);
+  }
+}
+
+@keyframes workflow-card-wave {
+  0% {
+    --workflow-y: -25%;
+  }
+  22.32% {
+    --workflow-y: 125%;
+  }
+  22.33%,
+  100% {
+    --workflow-y: -25%;
+  }
+}
+
+@keyframes workflow-rail-wave {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -8px);
+  }
+  0.4% {
+    opacity: 1;
+  }
+  3.5% {
+    opacity: 1;
+    transform: translate(-50%, 36px);
+  }
+  3.57%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 44px);
+  }
+}
+
+.work-card-frame {
+  position: relative;
+  background: #020202;
+}
+
+.work-card-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, #8a8a8a 0%, #020202 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   mask-composite: exclude;
 }
@@ -250,7 +381,9 @@ h6 {
 
 @media (prefers-reduced-motion: reduce) {
   .tech-slider-track,
-  .experience-slider-track {
+  .experience-slider-track,
+  .workflow-card-ring,
+  .workflow-rail::after {
     animation: none;
   }
 }
