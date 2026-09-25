@@ -31,6 +31,7 @@ export default function ServicesSliderCard({ title, description, icon }: Service
         height={280}
         sizes="(min-width: 1440px) 289px, 180px"
         loading="lazy"
+        decoding="async"
         aria-hidden="true"
         className="pointer-events-none absolute right-[-8%] bottom-[-10%] z-0 size-[68%] rotate-[-30deg] object-contain brightness-0"
       />
@@ -41,6 +42,8 @@ export default function ServicesSliderCard({ title, description, icon }: Service
           width={70}
           height={70}
           sizes="75px"
+          loading="lazy"
+          decoding="async"
           className="size-18.75 object-contain"
         />
       </div>

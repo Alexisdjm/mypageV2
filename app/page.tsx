@@ -1,4 +1,14 @@
-import { ExperienceSlider, HeroBanner, ReactBitsLight, Services, Stack, TechSlider, Work, Workflow } from "@/src/components";
+import {
+  Contact,
+  ExperienceSlider,
+  HeroBanner,
+  ReactBitsLight,
+  Services,
+  Stack,
+  TechSlider,
+  Work,
+  Workflow,
+} from "@/src/components";
 import { homeExperience } from "@/src/config/experience";
 import { homeHero } from "@/src/config/homeHero";
 import { homeServices } from "@/src/config/services";
@@ -19,6 +29,7 @@ export default function Home() {
       <Work {...homeWork} />
       <Workflow {...homeWorkflow} />
       <Stack {...homeStack} />
+      <Contact />
     </>
   );
 }

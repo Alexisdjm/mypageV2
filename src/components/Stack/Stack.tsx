@@ -28,7 +28,7 @@ export default function Stack({ heading, subtitle, rows, className = "" }: Stack
         <p className="mx-auto mt-3 max-w-xl text-base text-white/70">{subtitle}</p>
       </div>
 
-      <div className="mt-12 flex flex-col gap-8">
+      <div className="mt-12 flex flex-col gap-5 [contain-intrinsic-size:auto_1400px] [content-visibility:auto]">
         {rows.map((row, index) => (
           <Slider
             key={`${row.direction ?? "left"}-${index}`}

@@ -9,6 +9,7 @@ export { default as Services } from "./Services";
 export { default as Work } from "./Work";
 export { default as Workflow } from "./Workflow/Workflow";
 export { default as Stack } from "./Stack/Stack";
+export { default as Contact } from "./Contact";
 export { Logo } from "./svgs";
 export { PrimaryCTA, SecondaryCTA, MenuCTA, Card, CardLight } from "./UXUI";
 export { ReactBitsLight, ReactBitsDots } from "./animations";

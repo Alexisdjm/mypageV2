@@ -16,6 +16,9 @@ function CompanyMark({ company, logo }: Pick<ExperienceCardProps, "company" | "l
         alt=""
         width={96}
         height={96}
+        sizes="48px"
+        loading="lazy"
+        decoding="async"
         className="h-12 w-12 object-contain"
       />
     );

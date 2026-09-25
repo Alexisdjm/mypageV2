@@ -30,7 +30,7 @@ export default function Header() {
 
       <div className="xl:justify-self-end">
         <div className="hidden xl:block">
-          <PrimaryCTA>Contact me</PrimaryCTA>
+          <PrimaryCTA href="/#contact">Contact me</PrimaryCTA>
         </div>
         <MenuCTA open={open} onToggle={() => (open ? close() : openMenu())} />
       </div>

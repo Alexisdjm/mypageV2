@@ -56,7 +56,7 @@ export default function SidebarMenu({ open, onClose }: SidebarMenuProps) {
         </nav>
 
         <div className="mt-10">
-          <PrimaryCTA variant="dark" onClick={onClose}>
+          <PrimaryCTA variant="dark" href="/#contact" onClick={onClose}>
             Contact me
           </PrimaryCTA>
         </div>

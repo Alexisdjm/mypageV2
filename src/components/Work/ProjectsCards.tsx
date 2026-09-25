@@ -35,6 +35,7 @@ export default function ProjectsCards({
             sizes="(min-width: 768px) 40vw, 86vw"
             priority={priority}
             loading={priority ? "eager" : "lazy"}
+            decoding={priority ? "sync" : "async"}
             className="h-auto w-[88%] object-contain"
           />
           {url ? (

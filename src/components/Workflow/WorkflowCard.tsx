@@ -29,6 +29,8 @@ export default function WorkflowCard({
           width={45}
           height={45}
           sizes="45px"
+          loading="lazy"
+          decoding="async"
           className="size-[45px] object-contain"
         />
       </div>
