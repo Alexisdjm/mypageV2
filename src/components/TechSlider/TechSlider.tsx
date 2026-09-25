@@ -1,3 +1,4 @@
+import Slider from "@/src/components/Slider/Slider";
 import { techStack } from "@/src/config/techStack";
 
 export interface TechSliderProps {
@@ -6,15 +7,18 @@ export interface TechSliderProps {
   className?: string;
 }
 
-function Track({
-  items,
-  hidden = false,
-}: {
-  items: readonly string[];
-  hidden?: boolean;
-}) {
+export default function TechSlider({
+  items = techStack,
+  duration = 32,
+  className = "",
+}: TechSliderProps) {
   return (
-    <ul className="flex items-center" aria-hidden={hidden || undefined}>
+    <Slider
+      as="section"
+      duration={duration}
+      className={`text-sm text-white/75 ${className}`}
+      aria-label="Technologies"
+    >
       {items.map((name) => (
         <li key={name} className="flex items-center">
           <span>{name}</span>
@@ -24,27 +28,6 @@ function Track({
           />
         </li>
       ))}
-    </ul>
-  );
-}
-
-export default function TechSlider({
-  items = techStack,
-  duration = 32,
-  className = "",
-}: TechSliderProps) {
-  return (
-    <section
-      className={`tech-slider overflow-hidden text-sm text-white/75 ${className}`}
-      aria-label="Technologies"
-    >
-      <div
-        className="tech-slider-track flex w-max"
-        style={{ animationDuration: `${duration}s` }}
-      >
-        <Track items={items} />
-        <Track items={items} hidden />
-      </div>
-    </section>
+    </Slider>
   );
 }

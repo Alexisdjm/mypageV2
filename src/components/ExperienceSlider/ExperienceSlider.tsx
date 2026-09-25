@@ -1,5 +1,6 @@
-import ExperienceCardSlider from "./ExperienceCardSlider";
-import type { ExperienceCardProps } from "./ExperienceCard";
+import { Slider } from "@/src/components/Slider";
+import { CardLight } from "@/src/components/UXUI";
+import ExperienceCard, { type ExperienceCardProps } from "./ExperienceCard";
 
 export interface ExperienceTextPart {
   text: string;
@@ -37,7 +38,7 @@ export default function ExperienceSlider({
 }: ExperienceSliderProps) {
   return (
     <section
-      className={`relative z-[4] px-6 py-20 text-center text-white/70 ${className}`}
+      className={`relative z-4 px-6 py-20 text-center text-white/70 ${className}`}
       aria-labelledby="experience-heading"
     >
       <h2 id="experience-heading" className="text-[32px] tracking-tight text-white md:text-[40px]">
@@ -47,7 +48,15 @@ export default function ExperienceSlider({
         <TextParts parts={subtitle} />
       </p>
 
-      <ExperienceCardSlider cards={cards} duration={duration} />
+      <CardLight className="mt-12">
+        <Slider duration={duration} gap="2rem" align="stretch" className="py-4">
+          {cards.map((card) => (
+            <li key={card.company} className="shrink-0">
+              <ExperienceCard {...card} />
+            </li>
+          ))}
+        </Slider>
+      </CardLight>
 
       <p className="mx-auto mt-12 max-w-3xl text-base leading-relaxed">
         <TextParts parts={summary} />

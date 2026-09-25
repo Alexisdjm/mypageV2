@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Card } from "@/src/components/UXUI";
 
 export interface ExperienceCardProps {
   company: string;
@@ -28,16 +29,14 @@ function CompanyMark({ company, logo }: Pick<ExperienceCardProps, "company" | "l
 }
 
 export default function ExperienceCard({ company, role, logo, url }: ExperienceCardProps) {
-  const className =
-    "relative flex w-[var(--experience-card-width,68vw)] flex-col items-start rounded-[20px] bg-transparent p-[15px] text-left font-sans transition-transform duration-300 ease-out hover:-translate-y-[15px] md:w-80";
-
-  const content = (
-    <>
-      <span
-        data-light
-        aria-hidden="true"
-        className="experience-card-ring pointer-events-none absolute inset-0 rounded-[20px]"
-      />
+  return (
+    <Card
+      href={url}
+      target={url ? "_blank" : undefined}
+      ariaLabel={url ? `${company} website` : undefined}
+      hover={15}
+      className="flex w-[68vw] flex-col items-start rounded-[20px] bg-transparent p-[15px] text-left font-sans md:w-80"
+    >
       <CompanyMark company={company} logo={logo} />
       <p className="mt-3 whitespace-nowrap text-[18px] text-white md:whitespace-normal md:text-[20px]">
         {company}
@@ -45,22 +44,6 @@ export default function ExperienceCard({ company, role, logo, url }: ExperienceC
       <p className="whitespace-nowrap text-[14px] text-white/70 md:whitespace-normal md:text-base">
         {role}
       </p>
-    </>
+    </Card>
   );
-
-  if (url) {
-    return (
-      <a
-        href={url}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={`${company} website`}
-        className={className}
-      >
-        {content}
-      </a>
-    );
-  }
-
-  return <article className={className}>{content}</article>;
 }
