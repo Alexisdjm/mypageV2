@@ -121,7 +121,7 @@ export default function Form() {
           ))}
         </select>
         <span
-          className="pointer-events-none absolute inset-y-0 right-4 z-[2] flex items-center text-white/70"
+          className="pointer-events-none absolute inset-y-0 right-4 z-2 flex items-center text-white/70"
           aria-hidden="true"
         >
           ▾
@@ -159,7 +159,7 @@ export default function Form() {
         <PrimaryCTA
           type="submit"
           disabled={isSubmitting}
-          className="h-11 w-full gap-2 rounded-[10%] px-5 md:w-[200px] disabled:cursor-not-allowed disabled:opacity-60"
+          className="h-11 w-full gap-2 rounded-[10%] px-5 md:w-50 disabled:cursor-not-allowed disabled:opacity-60"
         >
           <Send className="size-4 shrink-0" aria-hidden="true" />
           {isSubmitting ? "Sending…" : "Send"}

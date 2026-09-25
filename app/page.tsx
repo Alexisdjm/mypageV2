@@ -1,5 +1,6 @@
 import {
   Contact,
+  Footer,
   ExperienceSlider,
   HeroBanner,
   ReactBitsLight,
@@ -30,6 +31,7 @@ export default function Home() {
       <Workflow {...homeWorkflow} />
       <Stack {...homeStack} />
       <Contact />
+      <Footer />
     </>
   );
 }
