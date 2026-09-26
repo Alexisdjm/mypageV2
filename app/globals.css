@@ -368,7 +368,9 @@ h6 {
   width: calc(100% + 3rem);
   margin-left: -1.5rem;
   --service-gap: 34px;
-  --service-card: min(17.5rem, 72vw);
+  /* Mobile / tablet: 290×320 proportion (height follows width) */
+  --service-card-width: min(290px, 72vw);
+  --service-card-height: calc(var(--service-card-width) * 320 / 290);
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -380,7 +382,7 @@ h6 {
 
 @media (min-width: 768px) {
   .services-slider {
-    --service-card: min(425px, calc((100cqi - 2 * var(--service-gap)) / 3));
+    --service-card-width: min(290px, 34cqi);
   }
 }
 

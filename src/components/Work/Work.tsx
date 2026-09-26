@@ -8,18 +8,28 @@ export interface WorkProps {
   className?: string;
 }
 
-export default function Work({ heading, subtitle, projects, className = "" }: WorkProps) {
+export default function Work({
+  heading,
+  subtitle,
+  projects,
+  className = "",
+}: WorkProps) {
   return (
     <section
-      className={`relative z-[4] shrink-0 px-4 py-20 text-center md:px-6 ${className}`}
+      className={`relative z-[4] shrink-0 px-4 py-20 text-center md:px-6 lg:px-[50px] ${className}`}
       aria-labelledby="work-heading"
     >
-      <h2 id="work-heading" className="text-[32px] tracking-tight text-white md:text-[40px]">
-        {heading}
-      </h2>
-      <p className="mx-auto mt-3 max-w-xl text-base text-white/70">{subtitle}</p>
+      <div className="mx-auto w-full max-w-[1400px]">
+        <h2
+          id="work-heading"
+          className="text-[32px] tracking-tight text-white md:text-[40px] lg:text-[54px]"
+        >
+          {heading}
+        </h2>
+        <p className="mx-auto mt-3 max-w-xl text-base text-white/70">{subtitle}</p>
 
-      <Projects projects={projects} />
+        <Projects projects={projects} />
+      </div>
     </section>
   );
 }
