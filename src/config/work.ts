@@ -37,6 +37,8 @@ export const homeWork: WorkProps = {
         "UX/UI for a sports platform: athlete profiles, training flows, and a visual system that feels fast, competitive, and easy to scan on any screen.",
       tags: ["Figma", "UI/UX", "Prototyping"],
       image: "/Work/athlix Hero.webp",
+      imageSecondary: "/Work/athlix complete.webp",
+      heroPreviewTopInset: "clamp(1rem, 6%, 2.5rem)",
       imageBg: "#48B000",
     },
     {
@@ -45,6 +47,7 @@ export const homeWork: WorkProps = {
         "End-to-end design for a sushi brand: ordering flows, menu browsing, and a look that feels bold in the kitchen and calm at checkout.",
       tags: ["Figma", "UI/UX", "Mobile"],
       image: "/Work/Kung Fu sushi Hero.webp",
+      imageSecondary: "/Work/Kung Fu sushi complete.webp",
       imageBg: "#9B352E",
     },
     {
@@ -53,6 +56,7 @@ export const homeWork: WorkProps = {
         "A travel product designed around planning and booking: destinations, itineraries, and a clean interface that makes the next trip feel obvious.",
       tags: ["Figma", "UI/UX", "Web App"],
       image: "/Work/traveza Hero.webp",
+      imageSecondary: "/Work/traveza complete.webp",
       imageBg: "#31A296",
     },
   ],
