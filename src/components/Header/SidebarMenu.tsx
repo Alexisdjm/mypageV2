@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { onSectionLinkClick } from "@/lib/smoothScroll";
+import SectionLink from "@/src/components/navigation/SectionLink";
 import {
   GitHubIcon,
   InstagramIcon,
@@ -23,6 +26,7 @@ type SidebarMenuProps = {
 };
 
 export default function SidebarMenu({ open, onClose }: SidebarMenuProps) {
+  const pathname = usePathname();
   const { messages } = useLocale();
   const menuLinks = getMenuLinks(messages);
 
@@ -56,16 +60,23 @@ export default function SidebarMenu({ open, onClose }: SidebarMenuProps) {
           <ul className="flex flex-col items-start gap-6">
             {menuLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-base text-black" onClick={onClose}>
+                <SectionLink href={link.href} className="text-base text-black" onClick={onClose}>
                   {link.label}
-                </Link>
+                </SectionLink>
               </li>
             ))}
           </ul>
         </nav>
 
         <div className="mt-10">
-          <PrimaryCTA variant="dark" href="/#contact" onClick={onClose}>
+          <PrimaryCTA
+            variant="dark"
+            href="/#contact"
+            onClick={(event) => {
+              onSectionLinkClick(event, "/#contact", pathname);
+              onClose();
+            }}
+          >
             {messages.nav.contactMe}
           </PrimaryCTA>
         </div>

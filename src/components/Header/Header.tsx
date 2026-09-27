@@ -1,8 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRef } from "react";
 import { cn } from "@/lib/utils";
+import { onSectionLinkClick } from "@/lib/smoothScroll";
+import SectionLink from "@/src/components/navigation/SectionLink";
 import { Logo } from "@/src/components/svgs";
+import { useCursorLight } from "@/src/components/Slider/useCursorLight";
 import { MenuCTA, PrimaryCTA } from "@/src/components/UXUI";
 import { SidebarMenu } from "@/src/components/Header";
 import { useHeaderScrollReveal } from "@/src/hooks/useHeaderScrollReveal";
@@ -11,10 +16,13 @@ import { useLocale } from "@/src/i18n/LocaleProvider";
 import { useSidebar } from "@/src/hooks/useSidebar";
 
 export default function Header() {
+  const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
   const { messages } = useLocale();
   const menuLinks = getMenuLinks(messages);
   const { open, openMenu, close } = useSidebar();
   const scrollMode = useHeaderScrollReveal();
+  useCursorLight(navRef, { desktopOnly: true, minWidth: 1280 });
 
   const isFixed = scrollMode !== "at-top";
   const showPinnedBar = scrollMode === "fixed-visible" || (scrollMode === "fixed-hidden" && open);
@@ -36,13 +44,21 @@ export default function Header() {
         <Logo className="h-[70px] w-[80px] xl:h-[65px] xl:w-[75px]" />
       </Link>
 
-      <nav className="hidden xl:block xl:justify-self-center" aria-label={messages.nav.mainAria}>
+      <nav
+        ref={navRef}
+        className="hidden xl:block xl:justify-self-center"
+        aria-label={messages.nav.mainAria}
+      >
         <ul className="flex items-center gap-6">
           {menuLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="text-sm">
+              <SectionLink
+                href={link.href}
+                data-light
+                className="header-nav-light-link text-sm focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/80"
+              >
                 {link.label}
-              </Link>
+              </SectionLink>
             </li>
           ))}
         </ul>
@@ -50,7 +66,12 @@ export default function Header() {
 
       <div className="xl:justify-self-end">
         <div className="hidden xl:block">
-          <PrimaryCTA href="/#contact">{messages.nav.contactMe}</PrimaryCTA>
+          <PrimaryCTA
+            href="/#contact"
+            onClick={(event) => onSectionLinkClick(event, "/#contact", pathname)}
+          >
+            {messages.nav.contactMe}
+          </PrimaryCTA>
         </div>
         <MenuCTA open={open} onToggle={() => (open ? close() : openMenu())} />
       </div>

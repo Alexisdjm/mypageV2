@@ -3,6 +3,7 @@ import { Montserrat, Plus_Jakarta_Sans, Geist } from "next/font/google";
 import { cookies } from "next/headers";
 import { Header, SocialSidebar } from "@/src/components";
 import { ScrollToTop } from "@/src/components/UXUI";
+import HashScrollOnNavigation from "@/src/components/navigation/HashScrollOnNavigation";
 import { LocaleProvider } from "@/src/i18n/LocaleProvider";
 import { DEFAULT_LOCALE, LOCALE_COOKIE, isLocale } from "@/src/i18n/locales";
 import "./globals.css";
@@ -42,6 +43,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="relative flex min-h-full flex-col">
         <LocaleProvider initialLocale={initialLocale}>
+          <HashScrollOnNavigation />
           <Header />
           {children}
           <SocialSidebar />

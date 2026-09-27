@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import SectionLink from "@/src/components/navigation/SectionLink";
 import { useRef, type ReactNode } from "react";
 import FooterLanguageSelect from "@/src/components/Footer/FooterLanguageSelect";
 import { useCursorLight } from "@/src/components/Slider/useCursorLight";
@@ -45,9 +45,9 @@ export default function Footer() {
             <ul className="flex flex-col gap-2">
               {menuLinks.map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} className="transition-colors hover:text-white">
+                  <SectionLink href={href} className="transition-colors hover:text-white">
                     {label}
-                  </Link>
+                  </SectionLink>
                 </li>
               ))}
             </ul>
