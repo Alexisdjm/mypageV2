@@ -4,6 +4,7 @@ export const homeServices: ServicesProps = {
   heading: "Services & solutions",
   subtitle: "Have a specific project or platform in mind? Reach out to discuss scope, timelines, and custom quotes.",
   ctaLabel: "Start a Project",
+  sliderAria: "Services offered",
   cards: [
     {
       title: "Custom Websites",

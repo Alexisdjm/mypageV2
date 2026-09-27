@@ -27,4 +27,6 @@ export const homeExperience: ExperienceSliderProps = {
     { text: "SEO", emphasis: true },
     { text: " best practices at its core." },
   ],
+  sliderAria: "Companies and roles",
+  externalLinkHint: "Opens company website in a new tab",
 };

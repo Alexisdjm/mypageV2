@@ -42,8 +42,9 @@ export default function ProjectsCards({
           }`}
           style={{ backgroundColor: imageBg }}
         >
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           {dualPreview && imageSecondary ? (
-            <div className="absolute inset-0 flex min-h-0 items-stretch gap-2 px-3 sm:gap-3 sm:px-4 md:gap-4 md:px-6">
+            <div className="flex h-full min-h-0 items-stretch gap-2 px-3 sm:gap-3 sm:px-4 md:gap-4 md:px-6">
               <div className="flex h-full min-h-0 w-[58%] flex-col sm:w-[60%] md:w-[62%]">
                 {heroPreviewTopInset ? (
                   <div
@@ -80,18 +81,21 @@ export default function ProjectsCards({
               </div>
             </div>
           ) : (
-            <Image
-              src={image}
-              alt=""
-              width={1400}
-              height={900}
-              sizes="(min-width: 768px) 40vw, 86vw"
-              priority={priority}
-              loading={priority ? "eager" : "lazy"}
-              decoding={priority ? "sync" : "async"}
-              className="h-auto w-[88%] object-contain"
-            />
+            <div className="flex size-full items-center justify-center px-5 py-7 md:px-8 md:py-9">
+              <Image
+                src={image}
+                alt=""
+                width={1400}
+                height={900}
+                sizes="(min-width: 768px) 40vw, 86vw"
+                priority={priority}
+                loading={priority ? "eager" : "lazy"}
+                decoding={priority ? "sync" : "async"}
+                className="h-auto w-[88%] object-contain"
+              />
+            </div>
           )}
+          </div>
           {url ? (
             <PrimaryCTA
               href={url}

@@ -12,6 +12,8 @@ export interface ExperienceSliderProps {
   subtitle: readonly ExperienceTextPart[];
   cards: readonly ExperienceCardProps[];
   summary: readonly ExperienceTextPart[];
+  sliderAria: string;
+  externalLinkHint: string;
   duration?: number;
   className?: string;
 }
@@ -33,6 +35,8 @@ export default function ExperienceSlider({
   subtitle,
   cards,
   summary,
+  sliderAria,
+  externalLinkHint,
   duration = 40,
   className = "",
 }: ExperienceSliderProps) {
@@ -49,10 +53,17 @@ export default function ExperienceSlider({
       </p>
 
       <CardLight className="mt-12">
-        <Slider duration={duration} gap="2rem" align="stretch" className="py-4" draggable>
+        <Slider
+          duration={duration}
+          gap="2rem"
+          align="stretch"
+          className="py-4"
+          draggable
+          aria-label={sliderAria}
+        >
           {cards.map((card) => (
             <li key={card.company} className="shrink-0">
-              <ExperienceCard {...card} />
+              <ExperienceCard {...card} externalLinkHint={externalLinkHint} />
             </li>
           ))}
         </Slider>

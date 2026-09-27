@@ -4,10 +4,15 @@ import ServicesSliderCard, { type ServicesSliderCardProps } from "./ServicesSlid
 
 export interface ServicesSliderProps {
   cards: readonly ServicesSliderCardProps[];
+  sliderAria: string;
   duration?: number;
 }
 
-export default function ServicesSlider({ cards, duration = 40 }: ServicesSliderProps) {
+export default function ServicesSlider({
+  cards,
+  sliderAria,
+  duration = 40,
+}: ServicesSliderProps) {
   return (
     <CardLight>
       <Slider
@@ -16,6 +21,7 @@ export default function ServicesSlider({ cards, duration = 40 }: ServicesSliderP
         align="stretch"
         className="services-slider mt-12 py-4"
         draggable
+        aria-label={sliderAria}
       >
         {cards.map((card) => (
           <li key={card.title} className="shrink-0">

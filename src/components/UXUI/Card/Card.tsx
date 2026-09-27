@@ -86,7 +86,7 @@ export default function Card({
   }
 
   return (
-    <article className={classes} style={style}>
+    <article className={classes} style={style} aria-label={ariaLabel}>
       {content}
     </article>
   );

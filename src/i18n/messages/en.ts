@@ -12,6 +12,8 @@ export const en: Messages = {
     mobileAria: "Mobile",
     closeMenu: "Close menu",
     menuDialog: "Menu",
+    skipToContent: "Skip to main content",
+    homeAria: "Home",
   },
   footer: {
     index: "Index",
@@ -67,11 +69,14 @@ export const en: Messages = {
       { text: "SEO", emphasis: true },
       { text: " best practices at its core." },
     ],
+    sliderAria: "Companies and roles",
+    externalLinkHint: "Opens company website in a new tab",
   },
   services: {
     heading: "Services & solutions",
     subtitle: "Have a specific project or platform in mind? Reach out to discuss scope, timelines, and custom quotes.",
     ctaLabel: "Start a Project",
+    sliderAria: "Services offered",
     cards: [
       {
         title: "Custom Websites",
@@ -191,6 +196,7 @@ export const en: Messages = {
   stack: {
     heading: "My Stack",
     subtitle: "The tools I use to design, build, and ship products end to end.",
+    sliderAriaLabel: "Tools and technologies",
     rows: [
       {
         size: "wide" as const,

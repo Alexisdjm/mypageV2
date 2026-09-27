@@ -75,7 +75,10 @@ export default function StackSliderCard({
       ring={false}
       className={`flex h-auto min-h-0 flex-col overflow-hidden rounded-[20px] border border-[#535353] bg-[#141414] px-5 py-4 text-left ${SIZE_CLASS[size]}`}
     >
-      <div className="flex min-h-0 flex-1 items-center justify-center">
+      <div
+        className="flex min-h-0 flex-1 items-center justify-center"
+        aria-hidden="true"
+      >
         <Image
           src={`/Stack/${STACK_LOGO_FILE[icon]}`}
           alt=""
@@ -88,9 +91,9 @@ export default function StackSliderCard({
           className={LOGO_BOX_CLASS}
         />
       </div>
-      <p className="shrink-0 font-[family-name:var(--font-plus-jakarta)] text-[20px] font-semibold text-white">
+      <h3 className="shrink-0 font-[family-name:var(--font-plus-jakarta)] text-[20px] font-semibold text-white">
         {name}
-      </p>
+      </h3>
     </Card>
   );
 }

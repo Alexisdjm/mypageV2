@@ -28,6 +28,13 @@ export default function Header() {
   const showPinnedBar = scrollMode === "fixed-visible" || (scrollMode === "fixed-hidden" && open);
 
   return (
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-neutral-950"
+      >
+        {messages.nav.skipToContent}
+      </a>
     <header
       className={cn(
         "inset-x-0 top-0 flex w-full items-center justify-between px-6 pt-4 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:px-10 xl:pt-2 pr-10",
@@ -40,7 +47,12 @@ export default function Header() {
         scrollMode === "fixed-hidden" && !open && "-translate-y-full opacity-0 pointer-events-none",
       )}
     >
-      <Link href="/" className="text-white xl:justify-self-start" onClick={close}>
+      <Link
+        href="/"
+        className="text-white xl:justify-self-start"
+        aria-label={messages.nav.homeAria}
+        onClick={close}
+      >
         <Logo className="h-[70px] w-[80px] xl:h-[65px] xl:w-[75px]" />
       </Link>
 
@@ -78,5 +90,6 @@ export default function Header() {
 
       <SidebarMenu open={open} onClose={close} />
     </header>
+    </>
   );
 }

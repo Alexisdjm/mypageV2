@@ -12,6 +12,8 @@ export const es = {
     mobileAria: "Móvil",
     closeMenu: "Cerrar menú",
     menuDialog: "Menú",
+    skipToContent: "Saltar al contenido principal",
+    homeAria: "Inicio",
   },
   footer: {
     index: "Índice",
@@ -67,11 +69,14 @@ export const es = {
       { text: "SEO", emphasis: true },
       { text: " en el centro." },
     ],
+    sliderAria: "Empresas y roles",
+    externalLinkHint: "Abre el sitio de la empresa en una pestaña nueva",
   },
   services: {
     heading: "Servicios y soluciones",
     subtitle: "¿Tienes un proyecto o plataforma en mente? Escríbeme para hablar de alcance, tiempos y presupuesto.",
     ctaLabel: "Iniciar proyecto",
+    sliderAria: "Servicios ofrecidos",
     cards: [
       {
         title: "Sitios web a medida",
@@ -191,6 +196,7 @@ export const es = {
   stack: {
     heading: "Mi stack",
     subtitle: "Herramientas que uso para diseñar, desarrollar y lanzar productos de punta a punta.",
+    sliderAriaLabel: "Herramientas y tecnologías",
     rows: [
       {
         size: "wide",

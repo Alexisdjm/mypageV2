@@ -3,6 +3,7 @@ import type { StackProps } from "@/src/components/Stack/Stack";
 export const homeStack: StackProps = {
   heading: "My Stack",
   subtitle: "The tools I use to design, build, and ship products end to end.",
+  sliderAriaLabel: "Tools and technologies",
   rows: [
     {
       size: "wide",

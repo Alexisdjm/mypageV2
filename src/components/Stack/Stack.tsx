@@ -11,11 +11,19 @@ export interface StackRow {
 export interface StackProps {
   heading: string;
   subtitle: string;
+  /** Accessible name for each marquee row (row index is appended in the UI). */
+  sliderAriaLabel: string;
   rows: readonly StackRow[];
   className?: string;
 }
 
-export default function Stack({ heading, subtitle, rows, className = "" }: StackProps) {
+export default function Stack({
+  heading,
+  subtitle,
+  sliderAriaLabel,
+  rows,
+  className = "",
+}: StackProps) {
   return (
     <section
       className={`relative z-[4] shrink-0 py-20 text-center ${className}`}
@@ -36,6 +44,7 @@ export default function Stack({ heading, subtitle, rows, className = "" }: Stack
             direction={row.direction}
             gap="1.25rem"
             align="start"
+            aria-label={`${sliderAriaLabel}, ${index + 1} / ${rows.length}`}
           >
             {row.cards.map((card) => (
               <li key={card.name} className="shrink-0">

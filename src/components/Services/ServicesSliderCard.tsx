@@ -35,7 +35,10 @@ export default function ServicesSliderCard({ title, description, icon }: Service
         aria-hidden="true"
         className="pointer-events-none absolute right-[-8%] bottom-[-10%] z-0 size-[52%] rotate-[-30deg] object-contain brightness-0 min-[1440px]:size-[68%]"
       />
-      <div className="relative z-10 grid size-14 place-items-center rounded-[8px] bg-white min-[1440px]:size-22.5 min-[1440px]:rounded-[10px]">
+      <div
+        className="relative z-10 grid size-14 place-items-center rounded-[8px] bg-white min-[1440px]:size-22.5 min-[1440px]:rounded-[10px]"
+        aria-hidden="true"
+      >
         <Image
           src={iconSrc}
           alt=""

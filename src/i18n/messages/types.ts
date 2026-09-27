@@ -29,6 +29,8 @@ export type Messages = {
     mobileAria: string;
     closeMenu: string;
     menuDialog: string;
+    skipToContent: string;
+    homeAria: string;
   };
   footer: {
     index: string;

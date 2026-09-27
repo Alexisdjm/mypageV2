@@ -7,6 +7,7 @@ export interface ServicesProps {
   heading: string;
   subtitle: string;
   ctaLabel: string;
+  sliderAria: string;
   cards: readonly ServicesSliderCardProps[];
   duration?: number;
   className?: string;
@@ -16,6 +17,7 @@ export default function Services({
   heading,
   subtitle,
   ctaLabel,
+  sliderAria,
   cards,
   duration = 40,
   className = "",
@@ -45,7 +47,7 @@ export default function Services({
       </h2>
       <p className="mx-auto mt-3 max-w-xl text-base text-white/70">{subtitle}</p>
 
-      <ServicesSlider cards={cards} duration={duration} />
+      <ServicesSlider cards={cards} duration={duration} sliderAria={sliderAria} />
 
       <SecondaryCTA className="mt-10 rounded-10 px-6">{ctaLabel}</SecondaryCTA>
     </section>
