@@ -96,6 +96,12 @@ body {
   font-weight: 400;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #020202;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -114,18 +120,6 @@ h6 {
 .social-sidebar:hover,
 .social-sidebar:focus-within {
   transform: translateX(0);
-}
-
-.social-light-ring,
-.social-light-glyph {
-  --x: -600px;
-  --y: -600px;
-  --social-glow: radial-gradient(
-    circle 140px at var(--x) var(--y),
-    #ffffff 0%,
-    #ffffff 10%,
-    #535353 100%
-  );
 }
 
 .ui-card-ring {
@@ -306,32 +300,6 @@ h6 {
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   mask-composite: exclude;
-}
-
-.social-light-ring {
-  border: 1.5px solid transparent;
-  background: var(--social-glow);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-}
-
-.social-light-glyph {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  background: var(--social-glow);
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
 }
 
 .social-sidebar-nudge {

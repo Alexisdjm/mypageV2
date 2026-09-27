@@ -4,9 +4,10 @@ export const WORK_PEEK = 16;
 
 export interface ProjectsProps {
   projects: readonly ProjectsCardProps[];
+  visitSiteLabel: string;
 }
 
-export default function Projects({ projects }: ProjectsProps) {
+export default function Projects({ projects, visitSiteLabel }: ProjectsProps) {
   return (
     <div className="relative mt-12">
       {projects.map((project, index) => (
@@ -18,7 +19,7 @@ export default function Projects({ projects }: ProjectsProps) {
             zIndex: index + 1,
           }}
         >
-          <ProjectsCards {...project} priority={index === 0} />
+          <ProjectsCards {...project} visitSiteLabel={visitSiteLabel} priority={index === 0} />
         </div>
       ))}
     </div>

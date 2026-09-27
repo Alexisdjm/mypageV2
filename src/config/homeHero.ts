@@ -11,4 +11,6 @@ export const homeHero: HeroBannerProps = {
     "Specialized in building fast Next.js interfaces, custom Shopify storefronts, and pixel-perfect web applications tailored to elevate your brand and maximize sales.",
   primaryLabel: "My resume",
   secondaryLabel: "See my work",
+  resumeHref: "/Docs/AJCV2026.pdf",
+  resumeDownloadName: "Alexis-Jimenez-CV-2026.pdf",
 };

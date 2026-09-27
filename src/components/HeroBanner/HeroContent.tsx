@@ -10,6 +10,8 @@ export interface HeroContentProps {
   description: string;
   primaryLabel: string;
   secondaryLabel: string;
+  resumeHref: string;
+  resumeDownloadName: string;
 }
 
 export default function HeroContent({
@@ -18,6 +20,8 @@ export default function HeroContent({
   description,
   primaryLabel,
   secondaryLabel,
+  resumeHref,
+  resumeDownloadName,
 }: HeroContentProps) {
   return (
     <>
@@ -35,7 +39,11 @@ export default function HeroContent({
       </p>
 
       <div className="mt-8 grid grid-cols-2 gap-3">
-        <PrimaryCTA className="gap-2">
+        <PrimaryCTA
+          href={resumeHref}
+          download={resumeDownloadName}
+          className="gap-2"
+        >
           {primaryLabel}
           <DownloadIcon />
         </PrimaryCTA>

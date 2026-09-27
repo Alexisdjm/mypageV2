@@ -5,19 +5,21 @@ export interface TechSliderProps {
   items?: readonly string[];
   duration?: number;
   className?: string;
+  ariaLabel?: string;
 }
 
 export default function TechSlider({
   items = techStack,
   duration = 32,
   className = "",
+  ariaLabel = "Technologies",
 }: TechSliderProps) {
   return (
     <Slider
       as="section"
       duration={duration}
       className={`text-sm text-white/75 ${className}`}
-      aria-label="Technologies"
+      aria-label={ariaLabel}
     >
       {items.map((name) => (
         <li key={name} className="flex items-center">

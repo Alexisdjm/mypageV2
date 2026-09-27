@@ -1,14 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
 import { useRef, type ReactNode } from "react";
+import FooterLanguageSelect from "@/src/components/Footer/FooterLanguageSelect";
 import { useCursorLight } from "@/src/components/Slider/useCursorLight";
-import {
-  footerIndexLinks,
-  footerSite,
-  footerSocialLinks,
-} from "@/src/config/footer";
+import { useLocale } from "@/src/i18n/LocaleProvider";
+import { getFooterSocialLinks, getMenuLinks } from "@/src/i18n/navLinks";
 import FooterClock from "./FooterClock";
 import WordEffect from "./WordEffect";
 
@@ -30,8 +27,10 @@ function FooterColumn({
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   useCursorLight(footerRef);
-
-  const { authorName, basedIn, copyrightYear } = footerSite;
+  const { messages } = useLocale();
+  const { footer, site } = messages;
+  const menuLinks = getMenuLinks(messages);
+  const footerSocialLinks = getFooterSocialLinks(messages);
 
   return (
     <footer ref={footerRef} className="relative z-4 shrink-0 bg-black pb-0">
@@ -41,10 +40,10 @@ export default function Footer() {
         className="ui-footer-rule pointer-events-none"
       />
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-8 gap-y-12 px-5 py-16 md:px-6 lg:grid-cols-4">
-        <FooterColumn title="Index">
-          <nav aria-label="Footer index">
+        <FooterColumn title={footer.index}>
+          <nav aria-label={footer.indexNavAria}>
             <ul className="flex flex-col gap-2">
-              {footerIndexLinks.map(({ href, label }) => (
+              {menuLinks.map(({ href, label }) => (
                 <li key={href}>
                   <Link href={href} className="transition-colors hover:text-white">
                     {label}
@@ -53,19 +52,11 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
-          <button
-            type="button"
-            className="mt-2 inline-flex items-center gap-1.5 text-white/85 transition-colors hover:text-white"
-            aria-haspopup="listbox"
-            aria-label="Site language"
-          >
-            English
-            <ChevronDown className="size-4 text-white/60" aria-hidden="true" />
-          </button>
+          <FooterLanguageSelect />
         </FooterColumn>
 
-        <FooterColumn title="Social">
-          <nav aria-label="Social links">
+        <FooterColumn title={footer.socialTitle}>
+          <nav aria-label={footer.socialNavAria}>
             <ul className="flex flex-col gap-2">
               {footerSocialLinks.map(({ href, label }) => (
                 <li key={label}>
@@ -84,14 +75,14 @@ export default function Footer() {
           </nav>
         </FooterColumn>
 
-        <FooterColumn title="Based in">
-          <p>{basedIn}</p>
+        <FooterColumn title={footer.basedIn}>
+          <p>{footer.location}</p>
           <FooterClock />
         </FooterColumn>
 
-        <FooterColumn title={`© ${copyrightYear}`}>
-          <p>{authorName}</p>
-          <p className="text-white/70">All rights reserved</p>
+        <FooterColumn title={`© ${site.copyrightYear}`}>
+          <p>{site.authorName}</p>
+          <p className="text-white/70">{footer.rights}</p>
         </FooterColumn>
       </div>
       <span

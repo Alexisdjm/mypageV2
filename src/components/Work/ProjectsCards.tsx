@@ -13,6 +13,7 @@ export interface ProjectsCardProps {
   heroPreviewTopInset?: string;
   imageBg: string;
   url?: string;
+  visitSiteLabel?: string;
   priority?: boolean;
 }
 
@@ -25,6 +26,7 @@ export default function ProjectsCards({
   heroPreviewTopInset,
   imageBg,
   url,
+  visitSiteLabel = "Visit site",
   priority = false,
 }: ProjectsCardProps) {
   const dualPreview = Boolean(imageSecondary);
@@ -97,7 +99,7 @@ export default function ProjectsCards({
               rel="noreferrer"
               className="absolute right-3 bottom-3 z-10 gap-2 rounded-full"
             >
-              Visit site
+              {visitSiteLabel}
               <svg
                 width="14"
                 height="14"

@@ -4,6 +4,7 @@ import type { ProjectsCardProps } from "./ProjectsCards";
 export interface WorkProps {
   heading: string;
   subtitle: string;
+  visitSite: string;
   projects: readonly ProjectsCardProps[];
   className?: string;
 }
@@ -11,6 +12,7 @@ export interface WorkProps {
 export default function Work({
   heading,
   subtitle,
+  visitSite,
   projects,
   className = "",
 }: WorkProps) {
@@ -28,7 +30,7 @@ export default function Work({
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-base text-white/70">{subtitle}</p>
 
-        <Projects projects={projects} />
+        <Projects projects={projects} visitSiteLabel={visitSite} />
       </div>
     </section>
   );

@@ -22,7 +22,7 @@ export default function ServicesSliderCard({ title, description, icon }: Service
   return (
     <Card
       hover={15}
-      className="flex h-(--service-card-height) w-(--service-card-width) flex-col items-start overflow-hidden rounded-5 bg-[#141414] p-4 text-left font-sans min-[1440px]:size-(--service-card) min-[1440px]:p-8"
+      className="flex h-(--service-card-height) w-(--service-card-width) flex-col items-start overflow-hidden rounded-[20px] bg-[#141414] p-4 text-left font-sans min-[1440px]:size-(--service-card) min-[1440px]:p-8"
     >
       <Image
         src={iconSrc}

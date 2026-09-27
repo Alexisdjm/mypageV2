@@ -1,4 +1,6 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useEffect, useRef, type ReactNode } from "react";
 
 export type SliderDirection = "left" | "right";
 export type SliderAlign = "start" | "center" | "stretch";
@@ -32,12 +34,27 @@ function Track({
   align: SliderAlign;
   hidden?: boolean;
 }) {
+  const listRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (!hidden) return;
+    const root = listRef.current;
+    if (!root) return;
+
+    const focusables = root.querySelectorAll<HTMLElement>(
+      'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    for (const el of focusables) {
+      el.tabIndex = -1;
+    }
+  }, [hidden, children]);
+
   return (
     <ul
+      ref={hidden ? listRef : undefined}
       className={`flex ${ALIGN_CLASS[align]}`}
       style={gap ? { gap } : undefined}
       aria-hidden={hidden || undefined}
-      inert={hidden || undefined}
     >
       {children}
     </ul>

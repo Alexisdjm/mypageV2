@@ -3,6 +3,7 @@ import type { WorkProps } from "@/src/components/Work";
 export const homeWork: WorkProps = {
   heading: "Recent Work",
   subtitle: "Selected work focused on performance, user experience, and business growth.",
+  visitSite: "Visit site",
   projects: [
     {
       title: "Sazonova — E-Commerce Funnel & Brand Landing page",

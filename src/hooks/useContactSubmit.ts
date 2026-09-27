@@ -12,6 +12,11 @@ export interface ContactFormValues {
 
 export type ContactSubmitStatus = "idle" | "loading" | "success" | "error";
 
+export type ContactSubmitErrorCopy = {
+  generic: string;
+  network: string;
+};
+
 export function useContactSubmit() {
   const [status, setStatus] = useState<ContactSubmitStatus>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -21,7 +26,7 @@ export function useContactSubmit() {
     setErrorMessage(null);
   }, []);
 
-  const submit = useCallback(async (values: ContactFormValues) => {
+  const submit = useCallback(async (values: ContactFormValues, errors?: ContactSubmitErrorCopy) => {
     setStatus("loading");
     setErrorMessage(null);
 
@@ -36,7 +41,7 @@ export function useContactSubmit() {
 
       if (!response.ok) {
         setStatus("error");
-        setErrorMessage(data?.error ?? "Something went wrong. Please try again.");
+        setErrorMessage(data?.error ?? errors?.generic ?? "Something went wrong. Please try again.");
         return false;
       }
 
@@ -44,7 +49,7 @@ export function useContactSubmit() {
       return true;
     } catch {
       setStatus("error");
-      setErrorMessage("Network error. Check your connection and try again.");
+      setErrorMessage(errors?.network ?? "Network error. Check your connection and try again.");
       return false;
     }
   }, []);

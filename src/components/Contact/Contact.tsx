@@ -1,4 +1,6 @@
-import { contactSection } from "@/src/config/contact";
+"use client";
+
+import { useLocale } from "@/src/i18n/LocaleProvider";
 import Form from "./Form";
 
 export interface ContactProps {
@@ -6,6 +8,9 @@ export interface ContactProps {
 }
 
 export default function Contact({ className = "" }: ContactProps) {
+  const { messages } = useLocale();
+  const { contact } = messages;
+
   return (
     <section
       id="contact"
@@ -17,11 +22,11 @@ export default function Contact({ className = "" }: ContactProps) {
           id="contact-heading"
           className="text-[64px] leading-[1.05] tracking-tight text-white"
         >
-          <span className="block">{contactSection.headingLine1}</span>
-          <span className="block">{contactSection.headingLine2}</span>
+          <span className="block">{contact.headingLine1}</span>
+          <span className="block">{contact.headingLine2}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/70">
-          {contactSection.subtitle}
+          {contact.subtitle}
         </p>
 
         <div className="mt-10 md:mt-12">

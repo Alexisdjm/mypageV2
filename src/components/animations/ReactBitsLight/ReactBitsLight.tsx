@@ -467,7 +467,7 @@ void main() {
   return (
     <div
       ref={containerRef}
-      className={`absolute inset-0 w-full h-full pointer-events-none z-[3] overflow-hidden ${className}`.trim()}
+      className={`pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden ${className}`.trim()}
     />
   );
 };

@@ -5,7 +5,7 @@ import { type ChangeEvent, type FormEvent, useId, useRef, useState } from "react
 import FormFieldShell from "@/src/components/Contact/FormFieldShell";
 import { useCursorLight } from "@/src/components/Slider/useCursorLight";
 import PrimaryCTA from "@/src/components/UXUI/PrimaryCTA/PrimaryCTA";
-import { contactProjectTypes } from "@/src/config/contact";
+import { useLocale } from "@/src/i18n/LocaleProvider";
 import { useContactSubmit, type ContactFormValues } from "@/src/hooks/useContactSubmit";
 
 const EMPTY_FORM: ContactFormValues = {
@@ -23,6 +23,10 @@ const singleLineClass = `relative z-0 block h-11 w-full ${fieldBg}`;
 const multiLineClass = `relative z-0 block min-h-[180px] w-full resize-y py-3 ${fieldBg}`;
 
 export default function Form() {
+  const { messages } = useLocale();
+  const { contact } = messages;
+  const formCopy = contact.form;
+
   const formRef = useRef<HTMLFormElement>(null);
   useCursorLight(formRef);
 
@@ -39,7 +43,10 @@ export default function Form() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const ok = await submit(values);
+    const ok = await submit(values, {
+      generic: formCopy.errorGeneric,
+      network: formCopy.errorNetwork,
+    });
     if (ok) setValues(EMPTY_FORM);
   };
 
@@ -52,13 +59,13 @@ export default function Form() {
     >
       <div className="flex flex-col gap-6 md:flex-row">
         <label className="flex flex-1 flex-col">
-          <span className="sr-only">First name</span>
+          <span className="sr-only">{formCopy.firstName}</span>
           <FormFieldShell>
             <input
               type="text"
               name="firstName"
               autoComplete="given-name"
-              placeholder="First Name"
+              placeholder={formCopy.firstName}
               required
               value={values.firstName}
               onChange={update("firstName")}
@@ -67,13 +74,13 @@ export default function Form() {
           </FormFieldShell>
         </label>
         <label className="flex flex-1 flex-col">
-          <span className="sr-only">Last name</span>
+          <span className="sr-only">{formCopy.lastName}</span>
           <FormFieldShell>
             <input
               type="text"
               name="lastName"
               autoComplete="family-name"
-              placeholder="Last Name"
+              placeholder={formCopy.lastName}
               required
               value={values.lastName}
               onChange={update("lastName")}
@@ -84,13 +91,13 @@ export default function Form() {
       </div>
 
       <label className="flex flex-col">
-        <span className="sr-only">Email address</span>
+        <span className="sr-only">{formCopy.email}</span>
         <FormFieldShell>
           <input
             type="email"
             name="email"
             autoComplete="email"
-            placeholder="Email Address"
+            placeholder={formCopy.email}
             required
             value={values.email}
             onChange={update("email")}
@@ -101,7 +108,7 @@ export default function Form() {
 
       <FormFieldShell>
         <label htmlFor={projectTypeId} className="sr-only">
-          Project type
+          {formCopy.projectType}
         </label>
         <select
           id={projectTypeId}
@@ -112,11 +119,11 @@ export default function Form() {
           className={`${singleLineClass} appearance-none pr-10 ${values.projectType ? "" : "text-white/45"}`}
         >
           <option value="" disabled hidden>
-            Project Type
+            {formCopy.projectType}
           </option>
-          {contactProjectTypes.map((type) => (
-            <option key={type} value={type} className="bg-[#141414] text-white">
-              {type}
+          {contact.projectTypes.map(({ value, label }) => (
+            <option key={value} value={value} className="bg-[#141414] text-white">
+              {label}
             </option>
           ))}
         </select>
@@ -129,11 +136,11 @@ export default function Form() {
       </FormFieldShell>
 
       <label className="flex flex-col">
-        <span className="sr-only">Message</span>
+        <span className="sr-only">{formCopy.message}</span>
         <FormFieldShell>
           <textarea
             name="message"
-            placeholder="Message"
+            placeholder={formCopy.message}
             required
             rows={6}
             value={values.message}
@@ -145,7 +152,7 @@ export default function Form() {
 
       {status === "success" ? (
         <p className="text-sm text-emerald-400" role="status">
-          Thanks — your message was sent successfully.
+          {formCopy.success}
         </p>
       ) : null}
 
@@ -162,7 +169,7 @@ export default function Form() {
           className="h-11 w-full gap-2 rounded-[10%] px-5 md:w-50 disabled:cursor-not-allowed disabled:opacity-60"
         >
           <Send className="size-4 shrink-0" aria-hidden="true" />
-          {isSubmitting ? "Sending…" : "Send"}
+          {isSubmitting ? formCopy.sending : formCopy.send}
         </PrimaryCTA>
       </div>
     </form>
