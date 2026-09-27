@@ -49,7 +49,7 @@ export default function ExperienceSlider({
       </p>
 
       <CardLight className="mt-12">
-        <Slider duration={duration} gap="2rem" align="stretch" className="py-4">
+        <Slider duration={duration} gap="2rem" align="stretch" className="py-4" draggable>
           {cards.map((card) => (
             <li key={card.company} className="shrink-0">
               <ExperienceCard {...card} />

@@ -15,6 +15,7 @@ export default function ServicesSlider({ cards, duration = 40 }: ServicesSliderP
         gap="var(--service-gap)"
         align="stretch"
         className="services-slider mt-12 py-4"
+        draggable
       >
         {cards.map((card) => (
           <li key={card.title} className="shrink-0">

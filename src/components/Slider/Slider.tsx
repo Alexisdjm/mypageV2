@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { useSliderDrag } from "./useSliderDrag";
 
 export type SliderDirection = "left" | "right";
 export type SliderAlign = "start" | "center" | "stretch";
@@ -20,6 +21,8 @@ export interface SliderProps {
   className?: string;
   trackClassName?: string;
   as?: "div" | "section";
+  /** Desktop only: pause on hover and drag horizontally. Default false. */
+  draggable?: boolean;
   "aria-label"?: string;
 }
 
@@ -70,24 +73,60 @@ export default function Slider({
   className = "",
   trackClassName = "",
   as: Root = "div",
+  draggable = false,
   "aria-label": ariaLabel,
 }: SliderProps) {
+  const rootRef = useRef<HTMLElement | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const gapStyle = gap ? { gap } : undefined;
 
+  const assignRootRef = (node: HTMLElement | null) => {
+    rootRef.current = node;
+  };
+
+  useSliderDrag({
+    rootRef,
+    trackRef,
+    draggable,
+    duration,
+    direction,
+  });
+
+  const rootClassName = [
+    "ui-slider overflow-hidden",
+    draggable ? "ui-slider--draggable" : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const track = (
+    <div
+      ref={trackRef}
+      className={`ui-slider-track flex w-max ${trackClassName}`}
+      data-direction={direction}
+      style={{ animationDuration: `${duration}s`, ...gapStyle }}
+    >
+      <Track gap={gap} align={align}>
+        {children}
+      </Track>
+      <Track gap={gap} align={align} hidden>
+        {children}
+      </Track>
+    </div>
+  );
+
+  if (Root === "section") {
+    return (
+      <section ref={assignRootRef} className={rootClassName} aria-label={ariaLabel}>
+        {track}
+      </section>
+    );
+  }
+
   return (
-    <Root className={`ui-slider overflow-hidden ${className}`} aria-label={ariaLabel}>
-      <div
-        className={`ui-slider-track flex w-max ${trackClassName}`}
-        data-direction={direction}
-        style={{ animationDuration: `${duration}s`, ...gapStyle }}
-      >
-        <Track gap={gap} align={align}>
-          {children}
-        </Track>
-        <Track gap={gap} align={align} hidden>
-          {children}
-        </Track>
-      </div>
-    </Root>
+    <div ref={assignRootRef} className={rootClassName} aria-label={ariaLabel}>
+      {track}
+    </div>
   );
 }

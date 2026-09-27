@@ -377,6 +377,25 @@ h6 {
   animation-iteration-count: infinite;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .ui-slider--draggable:hover .ui-slider-track {
+    animation-play-state: paused;
+  }
+
+  .ui-slider--draggable {
+    cursor: grab;
+    user-select: none;
+  }
+
+  .ui-slider--draggable.is-dragging {
+    cursor: grabbing;
+  }
+
+  .ui-slider--draggable.is-dragging .ui-slider-track {
+    animation-play-state: paused;
+  }
+}
+
 .ui-slider-track[data-direction="right"] {
   animation-direction: reverse;
 }
