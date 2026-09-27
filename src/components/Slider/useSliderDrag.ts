@@ -19,12 +19,18 @@ function wrapMarqueeTranslate(translateX: number, loopWidth: number) {
   return x;
 }
 
+function getMarqueeLoopWidth(track: HTMLDivElement) {
+  const firstList = track.querySelector(":scope > ul");
+  if (firstList) return firstList.getBoundingClientRect().width;
+  return track.scrollWidth / 2;
+}
+
 function resumeTrackAnimation(
   track: HTMLDivElement,
   duration: number,
   direction: SliderDirection,
 ) {
-  const loopWidth = track.scrollWidth / 2;
+  const loopWidth = getMarqueeLoopWidth(track);
   const tx = wrapMarqueeTranslate(getTranslateX(track), loopWidth);
   let progress = -tx / loopWidth;
   if (direction === "right") progress = 1 - progress;
@@ -133,32 +139,22 @@ export function useSliderDrag({
       sessionRef.current = null;
       root.classList.remove("is-dragging");
 
-      if (manualRef.current) {
+      if (manualRef.current && trackRef.current) {
         requestAnimationFrame(() => {
-          if (!root.matches(":hover") && trackRef.current) {
-            resumeTrackAnimation(trackRef.current, duration, direction);
-            manualRef.current = false;
-          }
+          if (!trackRef.current) return;
+          resumeTrackAnimation(trackRef.current, duration, direction);
+          manualRef.current = false;
         });
       }
     };
 
-    const onPointerLeave = () => {
-      if (draggingRef.current || !manualRef.current) return;
-      if (!trackRef.current) return;
-      resumeTrackAnimation(trackRef.current, duration, direction);
-      manualRef.current = false;
-    };
-
     root.addEventListener("pointerdown", onPointerDown);
-    root.addEventListener("pointerleave", onPointerLeave);
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", endDrag);
     window.addEventListener("pointercancel", endDrag);
 
     return () => {
       root.removeEventListener("pointerdown", onPointerDown);
-      root.removeEventListener("pointerleave", onPointerLeave);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerup", endDrag);
       window.removeEventListener("pointercancel", endDrag);

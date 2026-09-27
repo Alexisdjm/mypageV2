@@ -21,7 +21,7 @@ export interface SliderProps {
   className?: string;
   trackClassName?: string;
   as?: "div" | "section";
-  /** Desktop only: pause on hover and drag horizontally. Default false. */
+  /** Desktop only: drag horizontally while the track keeps auto-scrolling when not dragging. */
   draggable?: boolean;
   "aria-label"?: string;
 }
@@ -78,7 +78,6 @@ export default function Slider({
 }: SliderProps) {
   const rootRef = useRef<HTMLElement | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const gapStyle = gap ? { gap } : undefined;
 
   const assignRootRef = (node: HTMLElement | null) => {
     rootRef.current = node;
@@ -105,7 +104,7 @@ export default function Slider({
       ref={trackRef}
       className={`ui-slider-track flex w-max ${trackClassName}`}
       data-direction={direction}
-      style={{ animationDuration: `${duration}s`, ...gapStyle }}
+      style={{ animationDuration: `${duration}s` }}
     >
       <Track gap={gap} align={align}>
         {children}
