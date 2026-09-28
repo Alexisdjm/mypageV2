@@ -19,7 +19,7 @@ export default function HomeView() {
   const { messages } = useLocale();
 
   return (
-    <main id="main-content">
+    <main id="main-content" className="min-h-dvh bg-[#020202]">
       <div className="relative flex min-h-dvh flex-1 flex-col overflow-hidden bg-[#020202]">
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden mask-[linear-gradient(to_bottom,black_0%,black_52%,transparent_96%)]"

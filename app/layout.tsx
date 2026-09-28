@@ -42,9 +42,16 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang={initialLocale}
-      className={cn("h-full", "antialiased", montserrat.variable, plusJakarta.variable, "font-sans", geist.variable)}
+      className={cn(
+        "dark h-full",
+        "antialiased",
+        montserrat.variable,
+        plusJakarta.variable,
+        "font-sans",
+        geist.variable,
+      )}
     >
-      <body className="relative flex min-h-full flex-col">
+      <body className="relative flex min-h-dvh flex-col bg-[#020202] text-foreground">
         <PersonJsonLd />
         <LocaleProvider initialLocale={initialLocale}>
           <HashScrollOnNavigation />

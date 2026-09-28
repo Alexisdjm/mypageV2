@@ -14,13 +14,13 @@ export default function Contact({ className = "" }: ContactProps) {
   return (
     <section
       id="contact"
-      className={`relative z-[4] shrink-0 py-20 text-center ${className}`}
+      className={`relative z-[4] max-w-full shrink-0 overflow-x-clip py-20 text-center ${className}`}
       aria-labelledby="contact-heading"
     >
-      <div className="mx-auto max-w-3xl px-5 md:px-6">
+      <div className="mx-auto min-w-0 max-w-3xl px-5 md:px-6">
         <h2
           id="contact-heading"
-          className="text-[64px] leading-[1.05] tracking-tight text-white"
+          className="mx-auto max-w-full text-[clamp(1.875rem,9vw,4rem)] leading-[1.08] tracking-tight text-balance text-white"
         >
           <span className="block">{contact.headingLine1}</span>
           <span className="block">{contact.headingLine2}</span>

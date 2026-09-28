@@ -4,9 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Portfolio is dark-only — do not tie page canvas to prefers-color-scheme (avoids white gaps on light-mode phones). */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: #020202;
+  --foreground: #ededed;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -82,14 +83,9 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 html {
+  color-scheme: dark;
+  background-color: #020202;
   scroll-behavior: smooth;
 }
 
@@ -105,16 +101,10 @@ html {
 }
 
 body {
-  background: var(--background);
+  background-color: #020202;
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   font-weight: 400;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #020202;
-  }
 }
 
 h1,
