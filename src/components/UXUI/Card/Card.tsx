@@ -77,6 +77,7 @@ export default function Card({
         target={target}
         rel={rel ?? (target === "_blank" ? "noreferrer" : undefined)}
         aria-label={ariaLabel}
+        draggable={false}
         className={classes}
         style={style}
       >

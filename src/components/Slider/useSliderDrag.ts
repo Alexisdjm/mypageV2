@@ -19,9 +19,10 @@ function wrapMarqueeTranslate(translateX: number, loopWidth: number) {
   return x;
 }
 
+/** One loop = half the list (original + duplicate items in a single row). */
 function getMarqueeLoopWidth(track: HTMLDivElement) {
-  const firstList = track.querySelector(":scope > ul");
-  if (firstList) return firstList.getBoundingClientRect().width;
+  const list = track.querySelector(":scope > ul");
+  if (list) return list.getBoundingClientRect().width / 2;
   return track.scrollWidth / 2;
 }
 
@@ -65,6 +66,7 @@ export function useSliderDrag({
   const activeDesktopRef = useRef(false);
   const draggingRef = useRef(false);
   const manualRef = useRef(false);
+  const didDragRef = useRef(false);
   const sessionRef = useRef<DragSession | null>(null);
 
   useEffect(() => {
@@ -86,19 +88,21 @@ export function useSliderDrag({
     const track = trackRef.current;
     if (!root || !track) return;
 
-    const beginDrag = (clientX: number) => {
+    const beginDrag = () => {
       track.style.animationPlayState = "paused";
       const baseTranslate = getTranslateX(track);
       track.style.animation = "none";
       track.style.transform = `translate3d(${baseTranslate}px, 0, 0)`;
       manualRef.current = true;
       draggingRef.current = true;
+      didDragRef.current = true;
       root.classList.add("is-dragging");
       return baseTranslate;
     };
 
     const onPointerDown = (event: PointerEvent) => {
       if (!activeDesktopRef.current || event.button !== 0) return;
+      didDragRef.current = false;
       sessionRef.current = {
         pointerId: event.pointerId,
         startX: event.clientX,
@@ -116,12 +120,18 @@ export function useSliderDrag({
       const dy = event.clientY - session.startY;
 
       if (!draggingRef.current) {
-        if (Math.hypot(dx, dy) < DRAG_THRESHOLD_PX) return;
+        if (Math.abs(dx) < DRAG_THRESHOLD_PX && Math.abs(dy) < DRAG_THRESHOLD_PX) return;
+        if (Math.abs(dx) < Math.abs(dy)) {
+          sessionRef.current = null;
+          return;
+        }
         event.preventDefault();
-        const base = beginDrag(session.startX);
+        const base = beginDrag();
         session.baseTranslate = base;
         track.setPointerCapture(event.pointerId);
       }
+
+      event.preventDefault();
 
       const next = session.baseTranslate + (event.clientX - session.startX);
       track.style.transform = `translate3d(${next}px, 0, 0)`;
@@ -148,16 +158,25 @@ export function useSliderDrag({
       }
     };
 
-    root.addEventListener("pointerdown", onPointerDown);
+    const onClickCapture = (event: MouseEvent) => {
+      if (!didDragRef.current) return;
+      event.preventDefault();
+      event.stopPropagation();
+      didDragRef.current = false;
+    };
+
+    root.addEventListener("pointerdown", onPointerDown, { capture: true });
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", endDrag);
     window.addEventListener("pointercancel", endDrag);
+    root.addEventListener("click", onClickCapture, { capture: true });
 
     return () => {
-      root.removeEventListener("pointerdown", onPointerDown);
+      root.removeEventListener("pointerdown", onPointerDown, { capture: true });
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerup", endDrag);
       window.removeEventListener("pointercancel", endDrag);
+      root.removeEventListener("click", onClickCapture, { capture: true });
     };
   }, [draggable, direction, duration, rootRef, trackRef]);
 }

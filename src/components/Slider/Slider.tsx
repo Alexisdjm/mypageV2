@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  useRef,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { useSliderDrag } from "./useSliderDrag";
 
 export type SliderDirection = "left" | "right";
@@ -26,40 +33,36 @@ export interface SliderProps {
   "aria-label"?: string;
 }
 
+/** Second copy for seamless loop — hidden from assistive tech (marquee decoration). */
+function MarqueeDuplicate({ children }: { children: ReactNode }) {
+  return Children.map(children, (child, index) => {
+    if (!isValidElement(child)) return null;
+    const key =
+      child.key != null ? `marquee-dup-${String(child.key)}` : `marquee-dup-${index}`;
+    return cloneElement(child as ReactElement<{ "aria-hidden"?: boolean; tabIndex?: number }>, {
+      key,
+      "aria-hidden": true,
+      tabIndex: -1,
+    });
+  });
+}
+
 function Track({
   children,
   gap,
   align,
-  hidden = false,
 }: {
   children: ReactNode;
   gap?: string;
   align: SliderAlign;
-  hidden?: boolean;
 }) {
-  const listRef = useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    if (!hidden) return;
-    const root = listRef.current;
-    if (!root) return;
-
-    const focusables = root.querySelectorAll<HTMLElement>(
-      'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
-    );
-    for (const el of focusables) {
-      el.tabIndex = -1;
-    }
-  }, [hidden, children]);
-
   return (
     <ul
-      ref={hidden ? listRef : undefined}
       className={`flex ${ALIGN_CLASS[align]}`}
       style={gap ? { gap } : undefined}
-      aria-hidden={hidden || undefined}
     >
       {children}
+      <MarqueeDuplicate>{children}</MarqueeDuplicate>
     </ul>
   );
 }
@@ -107,9 +110,6 @@ export default function Slider({
       style={{ animationDuration: `${duration}s` }}
     >
       <Track gap={gap} align={align}>
-        {children}
-      </Track>
-      <Track gap={gap} align={align} hidden>
         {children}
       </Track>
     </div>

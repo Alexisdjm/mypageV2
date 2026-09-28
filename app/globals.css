@@ -390,6 +390,12 @@ h6 {
   .ui-slider--draggable.is-dragging {
     cursor: grabbing;
   }
+
+  /* Allow horizontal marquee drag on cards that are links (disable native link drag). */
+  .ui-slider--draggable a[href] {
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
 }
 
 .ui-slider-track[data-direction="right"] {
@@ -435,10 +441,52 @@ h6 {
   }
 }
 
+/* Primary CTA — soft light ripples on hover (even inset via box-shadow spread) */
+.primary-cta-group {
+  isolation: isolate;
+}
+
+.primary-cta-ripple {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0;
+  box-shadow: 0 0 0 0 rgba(228, 228, 234, 0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primary-cta-group:not(:disabled):hover .primary-cta-ripple {
+    animation: primary-cta-ripple 2.2s ease-out infinite;
+  }
+
+  .primary-cta-group:not(:disabled):hover .primary-cta-ripple--2 {
+    animation-delay: 0.73s;
+  }
+
+  .primary-cta-group:not(:disabled):hover .primary-cta-ripple--3 {
+    animation-delay: 1.46s;
+  }
+}
+
+@keyframes primary-cta-ripple {
+  0% {
+    opacity: 0.65;
+    box-shadow: 0 0 0 5px rgba(228, 228, 234, 0.38);
+  }
+
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 0 18px rgba(228, 228, 234, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ui-slider-track,
   .ui-card-ring-wave,
-  .workflow-rail::after {
+  .workflow-rail::after,
+  .primary-cta-group:hover .primary-cta-ripple {
     animation: none;
   }
 }
