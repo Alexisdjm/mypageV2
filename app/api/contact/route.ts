@@ -1,4 +1,5 @@
 import { contactProjectTypes } from "@/src/config/contact";
+import { getContactMailConfig } from "@/src/env/server";
 import { NextResponse } from "next/server";
 
 const PROJECT_TYPES = new Set<string>(contactProjectTypes);
@@ -16,12 +17,9 @@ function isValidEmail(email: string) {
 }
 
 export async function POST(request: Request) {
-  const apiKey = process.env.BREVO_API_KEY;
-  const senderEmail = process.env.BREVO_SENDER_EMAIL;
-  const senderName = process.env.BREVO_SENDER_NAME ?? "Portfolio contact";
-  const toEmail = process.env.BREVO_CONTACT_TO_EMAIL;
+  const mailConfig = getContactMailConfig();
 
-  if (!apiKey || !senderEmail || !toEmail) {
+  if (!mailConfig) {
     return NextResponse.json(
       { error: "Contact form is not configured on the server." },
       { status: 503 },
@@ -91,12 +89,12 @@ export async function POST(request: Request) {
     headers: {
       accept: "application/json",
       "content-type": "application/json",
-      "api-key": apiKey,
+      "api-key": mailConfig.apiKey,
     },
     body: JSON.stringify({
-      sender: { name: senderName, email: senderEmail },
+      sender: { name: mailConfig.senderName, email: mailConfig.senderEmail },
       replyTo: { email: trimmed.email, name: fullName },
-      to: [{ email: toEmail }],
+      to: [{ email: mailConfig.contactToEmail }],
       subject: `Portfolio inquiry — ${trimmed.projectType}`,
       htmlContent,
     }),

@@ -1,0 +1,26 @@
+# dependencies & build output
+node_modules
+.next
+out
+build
+coverage
+
+# git & IDE
+.git
+.gitignore
+.cursor
+*.md
+!README.md
+
+# env (inject at build/run via Jenkins)
+.env
+.env.*
+!.env.example
+
+# logs & OS
+npm-debug.log*
+.DS_Store
+
+# docker
+Dockerfile*
+docker-compose*.yml
