@@ -1,12 +1,13 @@
 import { Montserrat, Plus_Jakarta_Sans, Geist } from "next/font/google";
 import PersonJsonLd from "@/src/components/seo/PersonJsonLd";
 import { buildSiteMetadata } from "@/src/lib/site-metadata";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { Header, SocialSidebar } from "@/src/components";
 import { ScrollToTop } from "@/src/components/UXUI";
 import HashScrollOnNavigation from "@/src/components/navigation/HashScrollOnNavigation";
+import { detectLocaleFromHeaders } from "@/src/i18n/detectLocale";
 import { LocaleProvider } from "@/src/i18n/LocaleProvider";
-import { DEFAULT_LOCALE, LOCALE_COOKIE, isLocale } from "@/src/i18n/locales";
+import { LOCALE_COOKIE, isLocale } from "@/src/i18n/locales";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -31,8 +32,12 @@ export const metadata = buildSiteMetadata();
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const cookieStore = await cookies();
   const cookieLocale = cookieStore.get(LOCALE_COOKIE)?.value;
+  const headerStore = await headers();
+
   const initialLocale =
-    cookieLocale && isLocale(cookieLocale) ? cookieLocale : DEFAULT_LOCALE;
+    cookieLocale && isLocale(cookieLocale)
+      ? cookieLocale
+      : detectLocaleFromHeaders((name) => headerStore.get(name));
 
   return (
     <html

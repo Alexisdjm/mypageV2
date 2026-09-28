@@ -300,8 +300,8 @@ export const es = {
   site: {
     authorName: "Alexis Jiménez",
     copyrightYear: 2026,
-    resumePath: "/Docs/AJCV2026.pdf",
-    resumeDownloadName: "Alexis-Jimenez-CV-2026.pdf",
+    resumePath: "/Docs/AJCV2026_ES.pdf",
+    resumeDownloadName: "Alexis-Jimenez-CV-2026-ES.pdf",
     scrollToTopAria: "Volver arriba",
   },
 } satisfies Messages;

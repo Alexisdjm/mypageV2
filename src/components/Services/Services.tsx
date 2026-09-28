@@ -49,7 +49,9 @@ export default function Services({
 
       <ServicesSlider cards={cards} duration={duration} sliderAria={sliderAria} />
 
-      <SecondaryCTA className="mt-10 rounded-10 px-6">{ctaLabel}</SecondaryCTA>
+      <SecondaryCTA href="/#contact" className="mt-10 rounded-10 px-6">
+        {ctaLabel}
+      </SecondaryCTA>
     </section>
   );
 }

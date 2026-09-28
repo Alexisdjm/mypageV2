@@ -49,6 +49,18 @@ export function LocaleProvider({
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
   useEffect(() => {
+    const fromCookie = document.cookie
+      .split(";")
+      .map((part) => part.trim())
+      .find((part) => part.startsWith(`${LOCALE_COOKIE}=`))
+      ?.slice(LOCALE_COOKIE.length + 1);
+
+    if (fromCookie && isLocale(fromCookie)) {
+      setLocaleState(fromCookie);
+      document.documentElement.lang = fromCookie;
+      return;
+    }
+
     const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
     if (stored && isLocale(stored)) {
       setLocaleState(stored);
