@@ -20,7 +20,7 @@ export type HeroMessages = {
 
 export type Messages = {
   nav: {
-    about: string;
+    howIHelp: string;
     experience: string;
     services: string;
     work: string;

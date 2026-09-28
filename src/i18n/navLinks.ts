@@ -2,7 +2,7 @@ import type { Messages } from "./messages/types";
 
 export function getMenuLinks(messages: Messages) {
   return [
-    { href: "/about", label: messages.nav.about },
+    { href: "/#capability-heading", label: messages.nav.howIHelp },
     { href: "/#experience-heading", label: messages.nav.experience },
     { href: "/#services-heading", label: messages.nav.services },
     { href: "/#work-heading", label: messages.nav.work },

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { scrollToHash } from "@/lib/smoothScroll";
 
-/** Smooth-scroll to `location.hash` after route changes (e.g. footer link from `/about`). */
+/** Smooth-scroll to `location.hash` after route changes (e.g. footer link from another route). */
 export default function HashScrollOnNavigation() {
   const pathname = usePathname();
 

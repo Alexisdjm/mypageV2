@@ -2,7 +2,7 @@ import type { Messages } from "./types";
 
 export const es = {
   nav: {
-    about: "Sobre mí",
+    howIHelp: "Cómo ayudo",
     experience: "Experiencia",
     services: "Servicios",
     work: "Proyectos",
