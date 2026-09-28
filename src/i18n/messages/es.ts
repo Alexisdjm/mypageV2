@@ -72,6 +72,39 @@ export const es = {
     sliderAria: "Empresas y roles",
     externalLinkHint: "Abre el sitio de la empresa en una pestaña nueva",
   },
+  capability: {
+    titleLine1: "Lo que necesites,",
+    titleLine2: "hecho bien",
+    description:
+      "Desde funciones personalizadas en Shopify hasta aplicaciones web a escala: aplico años de experiencia, arquitectura limpia y tecnología moderna para construir exactamente lo que tu negocio requiere.",
+    features: [
+      {
+        metric: "+100",
+        label: "Tiendas y lógica",
+        description: "Desarrollos Shopify a medida según tus especificaciones",
+      },
+      {
+        metric: "+6",
+        label: "Equipos y agencias",
+        description: "Flujo de trabajo internacional y estándares de equipo",
+      },
+      {
+        metric: "100%",
+        label: "SEO y estándares",
+        description: "Código accesible y listo para buscadores por defecto",
+      },
+      {
+        metric: "Full-Stack",
+        label: "Apps web a medida",
+        description: "Construidas desde cero según tus necesidades",
+      },
+      {
+        metric: "Global",
+        label: "Cualquier ubicación",
+        description: "Ejecución transfronteriza para cualquier alcance de proyecto",
+      },
+    ],
+  },
   services: {
     heading: "Servicios y soluciones",
     subtitle: "¿Tienes un proyecto o plataforma en mente? Escríbeme para hablar de alcance, tiempos y presupuesto.",

@@ -72,6 +72,39 @@ export const en: Messages = {
     sliderAria: "Companies and roles",
     externalLinkHint: "Opens company website in a new tab",
   },
+  capability: {
+    titleLine1: "Whatever You Need,",
+    titleLine2: "Built Right",
+    description:
+      "From custom Shopify features to full-scale web applications—I leverage years of hands-on experience, clean architecture, and modern tech to build exactly what your business requires.",
+    features: [
+      {
+        metric: "+100",
+        label: "Storefronts & Logic",
+        description: "Custom Shopify builds tailored to your specs",
+      },
+      {
+        metric: "+6",
+        label: "Teams & Agencies",
+        description: "International team workflow & standards",
+      },
+      {
+        metric: "100%",
+        label: "SEO & Standards",
+        description: "Accessible, search ready code by default",
+      },
+      {
+        metric: "Full-Stack",
+        label: "Bespoke Web Apps",
+        description: "Built from scratch to meet your needs",
+      },
+      {
+        metric: "Global",
+        label: "Any Location",
+        description: "Cross-border execution for any project scope",
+      },
+    ],
+  },
   services: {
     heading: "Services & solutions",
     subtitle: "Have a specific project or platform in mind? Reach out to discuss scope, timelines, and custom quotes.",

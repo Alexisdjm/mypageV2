@@ -2,6 +2,7 @@
 
 import {
   Contact,
+  Capability,
   ExperienceSlider,
   Footer,
   HeroBanner,
@@ -43,6 +44,7 @@ export default function HomeView() {
       </div>
       <ExperienceSlider {...messages.experience} />
       <Services {...messages.services} />
+      <Capability {...messages.capability} />
       <Work {...messages.work} />
       <Workflow {...messages.workflow} />
       <Stack {...messages.stack} />

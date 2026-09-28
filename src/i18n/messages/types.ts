@@ -2,6 +2,7 @@ import type { ExperienceSliderProps } from "@/src/components/ExperienceSlider";
 import type { ServicesProps } from "@/src/components/Services";
 import type { WorkProps } from "@/src/components/Work";
 import type { WorkflowProps } from "@/src/components/Workflow/Workflow";
+import type { CapabilityProps } from "@/src/components/Capability";
 import type { StackProps } from "@/src/components/Stack/Stack";
 
 /** Hero copy only — resume URL lives under `site` and is merged in `HomeView`. */
@@ -51,6 +52,7 @@ export type Messages = {
   hero: HeroMessages;
   techSliderAria: string;
   experience: ExperienceSliderProps;
+  capability: CapabilityProps;
   services: ServicesProps;
   work: WorkProps;
   workflow: WorkflowProps;

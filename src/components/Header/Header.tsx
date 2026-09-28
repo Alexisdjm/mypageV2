@@ -87,9 +87,9 @@ export default function Header() {
         </div>
         <MenuCTA open={open} onToggle={() => (open ? close() : openMenu())} />
       </div>
-
-      <SidebarMenu open={open} onClose={close} />
     </header>
+
+    <SidebarMenu open={open} onClose={close} />
     </>
   );
 }
