@@ -162,11 +162,11 @@ export default function Form() {
         </p>
       ) : null}
 
-      <div className="flex justify-end">
+      <div className="flex justify-end overflow-visible py-1">
         <PrimaryCTA
           type="submit"
           disabled={isSubmitting}
-          className="h-11 w-full gap-2 rounded-[10%] px-5 md:w-50 disabled:cursor-not-allowed disabled:opacity-60"
+          className="h-11 w-full gap-2 rounded-[10px] px-5 md:w-50 disabled:cursor-not-allowed disabled:opacity-60"
         >
           <Send className="size-4 shrink-0" aria-hidden="true" />
           {isSubmitting ? formCopy.sending : formCopy.send}
