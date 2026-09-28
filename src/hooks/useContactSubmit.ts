@@ -1,5 +1,6 @@
 "use client";
 
+import { getContactSubmitUrl } from "@/src/env/public";
 import { useCallback, useState } from "react";
 
 export interface ContactFormValues {
@@ -31,7 +32,7 @@ export function useContactSubmit() {
     setErrorMessage(null);
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(getContactSubmitUrl(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),

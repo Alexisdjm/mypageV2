@@ -47,7 +47,7 @@ export default function ServicesSliderCard({ title, description, icon }: Service
           sizes="(min-width: 1440px) 75px, 45px"
           loading="lazy"
           decoding="async"
-          className="size-[45px] object-contain min-[1440px]:size-18.75"
+          className="size-11.25 object-contain min-[1440px]:size-18.75"
         />
       </div>
       <h3 className="relative z-10 mt-auto max-w-[92%] text-[20px] leading-snug text-white min-[1440px]:max-w-[90%] min-[1440px]:text-[22px]">

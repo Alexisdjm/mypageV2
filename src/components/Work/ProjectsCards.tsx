@@ -101,7 +101,7 @@ export default function ProjectsCards({
               href={url}
               target="_blank"
               rel="noreferrer"
-              className="absolute right-3 bottom-3 z-10 gap-2 rounded-full"
+              className="absolute right-3 bottom-3 z-10 gap-2 rounded-10"
             >
               {visitSiteLabel}
               <svg
