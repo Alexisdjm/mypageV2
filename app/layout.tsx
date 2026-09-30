@@ -2,9 +2,6 @@ import { Montserrat, Plus_Jakarta_Sans, Geist } from "next/font/google";
 import PersonJsonLd from "@/src/components/seo/PersonJsonLd";
 import { buildSiteMetadata } from "@/src/lib/site-metadata";
 import { cookies, headers } from "next/headers";
-import { Header, SocialSidebar } from "@/src/components";
-import { ScrollToTop } from "@/src/components/UXUI";
-import HashScrollOnNavigation from "@/src/components/navigation/HashScrollOnNavigation";
 import { detectLocaleFromHeaders } from "@/src/i18n/detectLocale";
 import { LocaleProvider } from "@/src/i18n/LocaleProvider";
 import { LOCALE_COOKIE, isLocale } from "@/src/i18n/locales";
@@ -53,13 +50,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="relative flex min-h-dvh flex-col bg-[#020202] text-foreground">
         <PersonJsonLd />
-        <LocaleProvider initialLocale={initialLocale}>
-          <HashScrollOnNavigation />
-          <Header />
-          {children}
-          <SocialSidebar />
-          <ScrollToTop />
-        </LocaleProvider>
+        <LocaleProvider initialLocale={initialLocale}>{children}</LocaleProvider>
       </body>
     </html>
   );

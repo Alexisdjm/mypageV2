@@ -223,6 +223,40 @@ h6 {
   }
 }
 
+/* 404 — cursor light on typography only (no card fill) */
+.not-found-light-text {
+  --x: -600px;
+  --y: -600px;
+  background-image: radial-gradient(
+    circle var(--nf-glow-radius, 160px) at var(--x) var(--y),
+    var(--nf-lit) 0%,
+    var(--nf-lit) var(--nf-glow-core, 10%),
+    var(--nf-dim) var(--nf-glow-falloff, 50%),
+    var(--nf-dim) 100%
+  );
+  background-clip: text;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--nf-dim);
+}
+
+.not-found-heading {
+  --nf-dim: rgba(163, 163, 163, 0.88);
+  --nf-lit: rgba(237, 237, 237, 0.98);
+  --nf-glow-radius: 160px;
+  --nf-glow-core: 12%;
+  --nf-glow-falloff: 52%;
+}
+
+@supports not (background-clip: text) {
+  .not-found-light-text {
+    -webkit-text-fill-color: unset;
+    background-image: none;
+    color: var(--nf-dim);
+  }
+}
+
 @property --workflow-y {
   syntax: "<length-percentage>";
   inherits: false;

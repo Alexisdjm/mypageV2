@@ -303,6 +303,8 @@ export const en: Messages = {
     resumePath: "/Docs/AJCV2026.pdf",
     resumeDownloadName: "Alexis-Jimenez-CV-2026.pdf",
     scrollToTopAria: "Scroll to top",
+    notFoundBackHome: "Back to home",
+    notFoundHeading: "Not found",
   },
 };
 

@@ -81,5 +81,7 @@ export type Messages = {
     resumePath: string;
     resumeDownloadName: string;
     scrollToTopAria: string;
+    notFoundBackHome: string;
+    notFoundHeading: string;
   };
 };

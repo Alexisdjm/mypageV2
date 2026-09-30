@@ -303,5 +303,7 @@ export const es = {
     resumePath: "/Docs/AJCV2026_ES.pdf",
     resumeDownloadName: "Alexis-Jimenez-CV-2026-ES.pdf",
     scrollToTopAria: "Volver arriba",
+    notFoundBackHome: "Volver al inicio",
+    notFoundHeading: "No encontrado",
   },
 } satisfies Messages;
