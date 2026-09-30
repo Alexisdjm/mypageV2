@@ -16,6 +16,6 @@ export function getFooterSocialLinks(messages: Messages) {
     { label: socialLinks.email, href: "mailto:" },
     { label: socialLinks.github, href: "https://github.com/Alexisdjm" },
     { label: socialLinks.linkedin, href: "https://www.linkedin.com" },
-    { label: socialLinks.instagram, href: "https://www.instagram.com" },
+    { label: socialLinks.instagram, href: "https://www.instagram.com/adcodeworks" },
   ] as const;
 }

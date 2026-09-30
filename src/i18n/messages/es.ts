@@ -52,14 +52,41 @@ export const es = {
       { text: " de experiencia en empresas de distintas partes del mundo" },
     ],
     cards: [
-      { company: "QodeSpace", role: "Experto Shopify y E-commerce", logo: "/experience/qode.png", url: "https://qodespace.com" },
-      { company: "Nativepath", role: "Desarrollador Shopify y React", logo: "/experience/nativepath.png", url: "https://nativepath.com" },
-      { company: "Colored Byte", role: "Especialista Shopify y React", logo: "/experience/colored.png", url: "https://coloredbyte.com" },
-      { company: "The Indie Collab", role: "Arquitecto Shopify y UI", logo: "/experience/the-indie.png", url: "https://theindiecollab.com" },
-      { company: "Meraki Vision", role: "Desarrollador Shopify y React", logo: "/experience/meraki.png", url: "https://merakivision.com" },
+      {
+        company: "QodeSpace",
+        role: "Experto Shopify y E-commerce",
+        logo: "/experience/qode.png",
+        url: "https://qodespace.com",
+      },
+      {
+        company: "Nativepath",
+        role: "Desarrollador Shopify y React",
+        logo: "/experience/nativepath.png",
+        url: "https://nativepath.com",
+      },
+      {
+        company: "Colored Byte",
+        role: "Especialista Shopify y React",
+        logo: "/experience/colored.png",
+        url: "https://coloredbyte.com",
+      },
+      {
+        company: "The Indie Collab",
+        role: "Arquitecto Shopify y UI",
+        logo: "/experience/the-indie.png",
+        url: "https://theindiecollab.com",
+      },
+      {
+        company: "Meraki Vision",
+        role: "Desarrollador Shopify y React",
+        logo: "/experience/meraki.png",
+        url: "https://www.meraki.vision",
+      },
     ],
     summary: [
-      { text: "Trabajar con marcas globales me permitió dominar varios ámbitos—desde e-commerce a medida y CMS visuales hasta apps modernas con " },
+      {
+        text: "Trabajar con marcas globales me permitió dominar varios ámbitos—desde e-commerce a medida y CMS visuales hasta apps modernas con ",
+      },
       { text: "React", emphasis: true },
       { text: " y " },
       { text: "Next.js", emphasis: true },
@@ -101,13 +128,15 @@ export const es = {
       {
         metric: "Global",
         label: "Cualquier ubicación",
-        description: "Ejecución transfronteriza para cualquier alcance de proyecto",
+        description:
+          "Ejecución transfronteriza para cualquier alcance de proyecto",
       },
     ],
   },
   services: {
     heading: "Servicios y soluciones",
-    subtitle: "¿Tienes un proyecto o plataforma en mente? Escríbeme para hablar de alcance, tiempos y presupuesto.",
+    subtitle:
+      "¿Tienes un proyecto o plataforma en mente? Escríbeme para hablar de alcance, tiempos y presupuesto.",
     ctaLabel: "Iniciar proyecto",
     sliderAria: "Servicios ofrecidos",
     cards: [
@@ -139,7 +168,8 @@ export const es = {
   },
   work: {
     heading: "Proyectos recientes",
-    subtitle: "Trabajo seleccionado enfocado en rendimiento, experiencia de usuario y crecimiento del negocio.",
+    subtitle:
+      "Trabajo seleccionado enfocado en rendimiento, experiencia de usuario y crecimiento del negocio.",
     visitSite: "Visitar sitio",
     projects: [
       {
@@ -206,29 +236,34 @@ export const es = {
     cards: [
       {
         title: "Descubrimiento estratégico",
-        description: "Definir alcance o auditar sitios existentes para mejoras clave.",
+        description:
+          "Definir alcance o auditar sitios existentes para mejoras clave.",
         icon: "/Workflow/search-_5_.webp",
       },
       {
         title: "Arquitectura visual",
-        description: "Prototipos Figma de alta fidelidad y recorridos intuitivos.",
+        description:
+          "Prototipos Figma de alta fidelidad y recorridos intuitivos.",
         icon: "/Workflow/art.webp",
       },
       {
         title: "Desarrollo",
-        description: "Apps y tiendas escalables con React, Next.js, Django y Shopify.",
+        description:
+          "Apps y tiendas escalables con React, Next.js, Django y Shopify.",
         icon: "/Workflow/setting.webp",
       },
       {
         title: "QA y entrega",
-        description: "Pruebas de rendimiento, SEO y accesibilidad antes del lanzamiento.",
+        description:
+          "Pruebas de rendimiento, SEO y accesibilidad antes del lanzamiento.",
         icon: "/Workflow/insect-_1_.webp",
       },
     ],
   },
   stack: {
     heading: "Mi stack",
-    subtitle: "Herramientas que uso para diseñar, desarrollar y lanzar productos de punta a punta.",
+    subtitle:
+      "Herramientas que uso para diseñar, desarrollar y lanzar productos de punta a punta.",
     sliderAriaLabel: "Herramientas y tecnologías",
     rows: [
       {

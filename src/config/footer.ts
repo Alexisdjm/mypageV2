@@ -6,7 +6,7 @@ export const footerSocialLinks = [
   { label: "Email", href: "mailto:" },
   { label: "Github", href: "https://github.com/Alexisdjm" },
   { label: "Linkedin", href: "https://www.linkedin.com" },
-  { label: "Instagram", href: "https://www.instagram.com" },
+  { label: "Instagram", href: "https://www.instagram.com/adcodeworks" },
 ] as const;
 
 export const footerSite = {

@@ -18,7 +18,7 @@ const socialIconClass = "size-[25px] shrink-0";
 
 /** Order: Instagram, LinkedIn, GitHub */
 const socialLinks = [
-  { href: "https://www.instagram.com", label: "Instagram", Icon: InstagramIcon },
+  { href: "https://www.instagram.com/adcodeworks", label: "Instagram", Icon: InstagramIcon },
   { href: "https://www.linkedin.com", label: "LinkedIn", Icon: LinkedInIcon },
   { href: "https://github.com/Alexisdjm", label: "GitHub", Icon: GitHubIcon },
 ] as const;

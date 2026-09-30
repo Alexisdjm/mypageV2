@@ -52,14 +52,41 @@ export const en: Messages = {
       { text: " of experience in different companies around the world" },
     ],
     cards: [
-      { company: "QodeSpace", role: "Shopify & E-commerce Expert", logo: "/experience/qode.png", url: "https://qodespace.com" },
-      { company: "Nativepath", role: "Shopify & React Developer", logo: "/experience/nativepath.png", url: "https://nativepath.com" },
-      { company: "Colored Byte", role: "Shopify & React Specialist", logo: "/experience/colored.png", url: "https://coloredbyte.com" },
-      { company: "The Indie Collab", role: "Shopify and UI Architect", logo: "/experience/the-indie.png", url: "https://theindiecollab.com" },
-      { company: "Meraki Vision", role: "Shopify & React Developer", logo: "/experience/meraki.png", url: "https://merakivision.com" },
+      {
+        company: "QodeSpace",
+        role: "Shopify & E-commerce Expert",
+        logo: "/experience/qode.png",
+        url: "https://qodespace.com",
+      },
+      {
+        company: "Nativepath",
+        role: "Shopify & React Developer",
+        logo: "/experience/nativepath.png",
+        url: "https://nativepath.com",
+      },
+      {
+        company: "Colored Byte",
+        role: "Shopify & React Specialist",
+        logo: "/experience/colored.png",
+        url: "https://coloredbyte.com",
+      },
+      {
+        company: "The Indie Collab",
+        role: "Shopify and UI Architect",
+        logo: "/experience/the-indie.png",
+        url: "https://theindiecollab.com",
+      },
+      {
+        company: "Meraki Vision",
+        role: "Shopify & React Developer",
+        logo: "/experience/meraki.png",
+        url: "https://www.meraki.vision",
+      },
     ],
     summary: [
-      { text: "Working with global brands has allowed me to master multiple domains—from bespoke e-commerce platforms and visual CMS builders, to modern web apps built with " },
+      {
+        text: "Working with global brands has allowed me to master multiple domains—from bespoke e-commerce platforms and visual CMS builders, to modern web apps built with ",
+      },
       { text: "React", emphasis: true },
       { text: " and " },
       { text: "Next.js", emphasis: true },
@@ -107,7 +134,8 @@ export const en: Messages = {
   },
   services: {
     heading: "Services & solutions",
-    subtitle: "Have a specific project or platform in mind? Reach out to discuss scope, timelines, and custom quotes.",
+    subtitle:
+      "Have a specific project or platform in mind? Reach out to discuss scope, timelines, and custom quotes.",
     ctaLabel: "Start a Project",
     sliderAria: "Services offered",
     cards: [
@@ -139,7 +167,8 @@ export const en: Messages = {
   },
   work: {
     heading: "Recent Work",
-    subtitle: "Selected work focused on performance, user experience, and business growth.",
+    subtitle:
+      "Selected work focused on performance, user experience, and business growth.",
     visitSite: "Visit site",
     projects: [
       {
@@ -206,22 +235,26 @@ export const en: Messages = {
     cards: [
       {
         title: "Strategic Discovery",
-        description: "Defining project scope or auditing existing sites for key improvements.",
+        description:
+          "Defining project scope or auditing existing sites for key improvements.",
         icon: "/Workflow/search-_5_.webp",
       },
       {
         title: "Visual Architecture",
-        description: "Crafting high-fidelity Figma prototypes and intuitive user journeys.",
+        description:
+          "Crafting high-fidelity Figma prototypes and intuitive user journeys.",
         icon: "/Workflow/art.webp",
       },
       {
         title: "Development",
-        description: "Building scalable apps and stores with React, Next.js, Django, and Shopify.",
+        description:
+          "Building scalable apps and stores with React, Next.js, Django, and Shopify.",
         icon: "/Workflow/setting.webp",
       },
       {
         title: "QA and Handover",
-        description: "Testing performance, SEO, and accessibility before deployment.",
+        description:
+          "Testing performance, SEO, and accessibility before deployment.",
         icon: "/Workflow/insect-_1_.webp",
       },
     ],

@@ -12,7 +12,7 @@ import { useCursorLight } from "@/src/components/Slider/useCursorLight";
 const iconClass = "size-[22px] shrink-0";
 
 const socialLinks = [
-  { href: "https://www.instagram.com", label: "Instagram" },
+  { href: "https://www.instagram.com/adcodeworks", label: "Instagram" },
   { href: "mailto:", label: "Email" },
   { href: "https://github.com/Alexisdjm", label: "GitHub" },
   { href: "https://www.linkedin.com", label: "LinkedIn" },
