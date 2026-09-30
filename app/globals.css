@@ -371,6 +371,20 @@ h6 {
   animation-iteration-count: infinite;
 }
 
+/* Touch/tablet: vertical page scroll; horizontal drag handled in JS */
+.ui-slider--draggable {
+  touch-action: pan-y;
+}
+
+.ui-slider--draggable.is-dragging {
+  touch-action: none;
+}
+
+.ui-slider--draggable a[href] {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .ui-slider--draggable {
     cursor: grab;
@@ -379,12 +393,6 @@ h6 {
 
   .ui-slider--draggable.is-dragging {
     cursor: grabbing;
-  }
-
-  /* Allow horizontal marquee drag on cards that are links (disable native link drag). */
-  .ui-slider--draggable a[href] {
-    -webkit-user-drag: none;
-    user-drag: none;
   }
 }
 

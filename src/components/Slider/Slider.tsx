@@ -28,7 +28,7 @@ export interface SliderProps {
   className?: string;
   trackClassName?: string;
   as?: "div" | "section";
-  /** Desktop only: drag horizontally while the track keeps auto-scrolling when not dragging. */
+  /** Pointer drag (mouse / touch / pen) while the track auto-scrolls when not dragging. */
   draggable?: boolean;
   "aria-label"?: string;
 }

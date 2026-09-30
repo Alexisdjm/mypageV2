@@ -3,8 +3,7 @@
 import { useEffect, useRef, type RefObject } from "react";
 import type { SliderDirection } from "./Slider";
 
-const DRAG_THRESHOLD_PX = 6;
-const DESKTOP_MQ = "(hover: hover) and (pointer: fine)";
+const DRAG_THRESHOLD_PX = 8;
 
 function getTranslateX(el: HTMLElement) {
   const transform = window.getComputedStyle(el).transform;
@@ -63,23 +62,10 @@ export function useSliderDrag({
   duration: number;
   direction: SliderDirection;
 }) {
-  const activeDesktopRef = useRef(false);
   const draggingRef = useRef(false);
   const manualRef = useRef(false);
   const didDragRef = useRef(false);
   const sessionRef = useRef<DragSession | null>(null);
-
-  useEffect(() => {
-    if (!draggable) return;
-
-    const desktop = window.matchMedia(DESKTOP_MQ);
-    const syncDesktop = () => {
-      activeDesktopRef.current = desktop.matches;
-    };
-    syncDesktop();
-    desktop.addEventListener("change", syncDesktop);
-    return () => desktop.removeEventListener("change", syncDesktop);
-  }, [draggable]);
 
   useEffect(() => {
     if (!draggable) return;
@@ -101,7 +87,7 @@ export function useSliderDrag({
     };
 
     const onPointerDown = (event: PointerEvent) => {
-      if (!activeDesktopRef.current || event.button !== 0) return;
+      if (event.button !== 0) return;
       didDragRef.current = false;
       sessionRef.current = {
         pointerId: event.pointerId,
@@ -114,7 +100,6 @@ export function useSliderDrag({
     const onPointerMove = (event: PointerEvent) => {
       const session = sessionRef.current;
       if (!session || event.pointerId !== session.pointerId) return;
-      if (!activeDesktopRef.current) return;
 
       const dx = event.clientX - session.startX;
       const dy = event.clientY - session.startY;
@@ -166,7 +151,7 @@ export function useSliderDrag({
     };
 
     root.addEventListener("pointerdown", onPointerDown, { capture: true });
-    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointermove", onPointerMove, { passive: false });
     window.addEventListener("pointerup", endDrag);
     window.addEventListener("pointercancel", endDrag);
     root.addEventListener("click", onClickCapture, { capture: true });

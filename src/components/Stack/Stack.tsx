@@ -44,6 +44,7 @@ export default function Stack({
             direction={row.direction}
             gap="1.25rem"
             align="start"
+            draggable
             aria-label={`${sliderAriaLabel}, ${index + 1} / ${rows.length}`}
           >
             {row.cards.map((card) => (
